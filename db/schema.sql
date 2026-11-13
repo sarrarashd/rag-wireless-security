@@ -41,3 +41,23 @@ latency_ms    INTEGER,
 feedback      INTEGER CHECK (feedback IN (-1, 0, 1)),
 created_at    TEXT DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Full-text keyword index over chunk text (BM25 ranking, Porter stemming).
+-- External-content table: the text is stored once, in chunks.
+CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
+text, content='chunks', content_rowid='chunk_id', tokenize='porter unicode61'
+);
+
+-- Triggers keep the keyword index in sync with the chunks table
+CREATE TRIGGER IF NOT EXISTS chunks_ai AFTER INSERT ON chunks BEGIN
+INSERT INTO chunks_fts(rowid, text) VALUES (new.chunk_id, new.text);
+END;
+
+CREATE TRIGGER IF NOT EXISTS chunks_ad AFTER DELETE ON chunks BEGIN
+INSERT INTO chunks_fts(chunks_fts, rowid, text) VALUES ('delete', old.chunk_id, old.text);
+END;
+
+CREATE TRIGGER IF NOT EXISTS chunks_au AFTER UPDATE ON chunks BEGIN
+INSERT INTO chunks_fts(chunks_fts, rowid, text) VALUES ('delete', old.chunk_id, old.text);
+INSERT INTO chunks_fts(rowid, text) VALUES (new.chunk_id, new.text);
+END;
