@@ -3,13 +3,10 @@ import bisect
 import re
 import sqlite3
 from collections import Counter
-from pathlib import Path
 
 from pypdf import PdfReader
 
-ROOT = Path(__file__).resolve().parent.parent
-DB_PATH = ROOT / "db" / "metadata.db"
-RAW_DIR = ROOT / "data" / "raw"
+from config import DB_PATH, RAW_DIR
 
 CHUNK_SIZES = [500, 1500]   # characters; two strategies for the evaluation
 OVERLAP_RATIO = 0.15        # each chunk repeats the last 15% of the previous one
@@ -21,11 +18,20 @@ def extract_pages(pdf_path):
     return [page.extract_text() or "" for page in reader.pages]
 
 
+def _normalize(line):
+    """Replace digits so a footer such as "Ver 1.0 3" matches "Ver 1.0 4" on the next page."""
+    return re.sub(r"\d+", "#", line.strip())
+
+
 def find_repeated_lines(pages, min_share=0.5):
-    """Lines that appear on at least half of the pages are headers or footers."""
+    """Lines that appear on at least half of the pages are headers or footers.
+
+    Lines are compared with their digits masked, so footers that embed the page
+    number are caught too. Returns the set of masked lines.
+    """
     counts = Counter()
     for text in pages:
-        counts.update({line.strip() for line in text.splitlines() if line.strip()})
+        counts.update({_normalize(line) for line in text.splitlines() if line.strip()})
     limit = max(3, int(len(pages) * min_share))
     return {line for line, n in counts.items() if n >= limit}
 
@@ -35,10 +41,10 @@ def clean_page(text, repeated):
     lines = []
     for line in text.splitlines():
         s = line.strip()
-        if not s or s in repeated:
+        if not s or _normalize(s) in repeated:
             continue
-        if re.fullmatch(r"(page\s*)?\d+|[ivxlc]+", s, flags=re.IGNORECASE):
-            continue  # a line that is only a page number
+        if re.fullmatch(r"(page\s*)?\d+|[ivxlc]+|(?:[a-z]{1,2}|\d+)-\d+", s, flags=re.IGNORECASE):
+            continue  # a line that is only a page number or label ("12", "iv", "2-3", "A-1")
         lines.append(s)
     text = "\n".join(lines)
     text = re.sub(r"(\w)-\n(\w)", r"\1\2", text)  # re-join words split across lines
@@ -85,6 +91,10 @@ def main():
         "SELECT doc_id, filename, series_number FROM documents ORDER BY doc_id"
     ).fetchall()
 
+    # Full rebuild: clear every chunk and restart the IDs so re-running gives the same result
+    conn.execute("DELETE FROM chunks")
+    conn.execute("DELETE FROM sqlite_sequence WHERE name = 'chunks'")
+
     print(f"{'Document':<22}{'Pages':>6}" + "".join(f"{'Chunks@' + str(s):>12}" for s in CHUNK_SIZES))
     totals = Counter()
     for doc_id, filename, series in docs:
@@ -96,7 +106,6 @@ def main():
         counts = []
         for size in CHUNK_SIZES:
             chunks = chunk_document(pages, size)
-            conn.execute("DELETE FROM chunks WHERE doc_id = ? AND chunk_size = ?", (doc_id, size))
             conn.executemany(
                 """INSERT INTO chunks
                    (doc_id, chunk_size, chunk_index, page_start, page_end, text, char_count)

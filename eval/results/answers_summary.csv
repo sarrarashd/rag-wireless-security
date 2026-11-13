@@ -1,0 +1,76 @@
+config,id,type,status,auto_verdict,notes,citations,withdrawn_warning,retrieval_ms,generation_ms,total_ms
+vector-500-k5,Q01,direct,answered,correct,3/3 key facts; 3/3 citations from expected documents,"CSWP 36A, p. 3; CSWP 36A, p. 6; CSWP 36A, pp. 4-5",False,987,9680,10668
+vector-500-k5,Q02,direct,insufficient,incorrect,refused an answerable question,,False,735,9668,10403
+vector-500-k5,Q03,direct,answered,correct,3/3 key facts; 3/3 citations from expected documents,"SP 800-121 Rev. 2, p. 51; SP 800-121 Rev. 2, p. 51; CSI U/OO/166417-21, p. 3",False,930,6804,7735
+vector-500-k5,Q04,direct,answered,partial,2/3 key facts; 3/3 citations from expected documents,"CSWP 36B, p. 11; CSWP 36B, pp. 11-12; CSWP 36B, p. 4",False,992,8234,9227
+vector-500-k5,Q05,direct,answered,partial,0/1 key facts; 3/3 citations from expected documents,"SP 800-187, p. 27; SP 800-187, pp. 27-28; SP 800-187, p. 36",False,219,6788,7007
+vector-500-k5,Q06,direct,answered,correct,2/2 key facts; 3/3 citations from expected documents,"SP 800-97, pp. 70-71; SP 800-97, p. 71; SP 800-97, p. 39",True,117,6148,6265
+vector-500-k5,Q07,multi,answered,partial,0/2 key facts; 4/4 citations from expected documents; cites 1 of the 2 documents needed,"SP 800-121 Rev. 2, p. 6; SP 800-121 Rev. 2, p. 52; SP 800-121 Rev. 2, p. 53; SP 800-121 Rev. 2, p. 53",False,121,8806,8927
+vector-500-k5,Q08,multi,answered,correct,3/3 key facts; 5/5 citations from expected documents,"CSWP 36D, p. 2; CSWP 36C, p. 2; CSWP 36D, pp. 2-3; CSWP 36A, p. 3; CSWP 36A, p. 10",False,141,7717,7858
+vector-500-k5,Q09,multi,answered,correct,3/3 key facts; 4/4 citations from expected documents,"CSWP 36D, p. 4; CSWP 36D, p. 2; CSWP 36A, pp. 1-2; CSWP 36C, p. 5",False,103,10758,10861
+vector-500-k5,Q10,paraphrase,answered,correct,2/2 key facts; 4/5 citations from expected documents,"SP 800-121 Rev. 2, p. 52; SP 800-121 Rev. 2, pp. 11-12; SP 800-121 Rev. 2, p. 58; CSI U/OO/166417-21, p. 3; SP 800-153, p. 12",False,131,11403,11534
+vector-500-k5,Q11,paraphrase,answered,partial,2/3 key facts; 5/5 citations from expected documents,"SP 800-187, p. 33; SP 800-187, p. 33; SP 800-187, p. 40; CSWP 36A, p. 3; CSWP 36C, p. 4",False,118,11451,11569
+vector-500-k5,Q12,paraphrase,answered,correct,3/3 key facts; 3/3 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, p. 1; CSI U/OO/166417-21, p. 2",False,117,7130,7247
+vector-500-k5,Q13,unanswerable,insufficient,correct,safe response,,False,194,6458,6653
+vector-500-k5,Q14,unanswerable,insufficient,correct,safe response,,False,189,8027,8216
+vector-500-k5,Q15,ambiguous,answered,correct,1/1 key facts; 5/5 citations from expected documents,"SP 800-97, p. 37; SP 800-97, p. 34; SP 800-97, p. 151; SP 800-97, p. 13; SP 800-97, p. 83",True,195,8261,8457
+keyword-500-k5,Q01,direct,answered,correct,3/3 key facts; 2/2 citations from expected documents,"CSWP 36A, p. 3; CSWP 36A, p. 4",False,8,8284,8292
+keyword-500-k5,Q02,direct,answered,correct,1/1 key facts; 3/3 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, p. 2; CSI U/OO/166417-21, p. 2",False,16,6302,6319
+keyword-500-k5,Q03,direct,answered,correct,3/3 key facts; 2/2 citations from expected documents,"SP 800-121 Rev. 2, p. 51; CSI U/OO/166417-21, p. 3",False,3,6189,6192
+keyword-500-k5,Q04,direct,answered,partial,2/3 key facts; 4/4 citations from expected documents,"CSWP 36B, p. 5; CSWP 36B, p. 14; CSWP 36B, p. 2; CSWP 36B, pp. 1-2",False,13,7263,7276
+keyword-500-k5,Q05,direct,answered,correct,1/1 key facts; 2/2 citations from expected documents,"SP 800-187, p. 27; SP 800-187, p. 27",False,4,6906,6909
+keyword-500-k5,Q06,direct,answered,correct,2/2 key facts; 5/5 citations from expected documents,"SP 800-97, p. 39; SP 800-97, p. 148; SP 800-97, p. 39; SP 800-97, p. 100; SP 800-97, p. 100",True,3,6429,6432
+keyword-500-k5,Q07,multi,answered,partial,1/2 key facts; 3/3 citations from expected documents,"SP 800-121 Rev. 2, p. 6; SP 800-121 Rev. 2, p. 52; CSI U/OO/166417-21, p. 8",False,4,8253,8257
+keyword-500-k5,Q08,multi,answered,partial,1/3 key facts; 5/5 citations from expected documents,"CSWP 36C, pp. 2-3; CSWP 36D, p. 4; CSWP 36D, p. 4; CSWP 36C, pp. 5-6; CSWP 36D, p. 5",False,5,9287,9292
+keyword-500-k5,Q09,multi,answered,correct,3/3 key facts; 5/5 citations from expected documents,"CSWP 36C, pp. 2-3; CSWP 36D, p. 4; CSWP 36C, p. 4; CSWP 36C, pp. 5-6; CSWP 36A, p. 2",False,4,11566,11570
+keyword-500-k5,Q10,paraphrase,insufficient,incorrect,refused an answerable question,,False,2,5547,5548
+keyword-500-k5,Q11,paraphrase,answered,partial,1/3 key facts; 1/1 citations from expected documents,"CSWP 36A, p. 3",False,4,8232,8236
+keyword-500-k5,Q12,paraphrase,answered,correct,3/3 key facts; 2/3 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, pp. 5-6; SP 800-97, p. 129",True,2,5279,5282
+keyword-500-k5,Q13,unanswerable,insufficient,correct,safe response,,False,3,4444,4447
+keyword-500-k5,Q14,unanswerable,insufficient,correct,safe response,,False,5,8175,8180
+keyword-500-k5,Q15,ambiguous,answered,correct,1/1 key facts; 5/5 citations from expected documents,"SP 800-121 Rev. 2, pp. 50-51; SP 800-121 Rev. 2, p. 56; SP 800-97, p. 29; SP 800-97, p. 42; SP 800-97, p. 89",True,5,10562,10567
+hybrid-500-k5,Q01,direct,answered,correct,3/3 key facts; 4/4 citations from expected documents,"CSWP 36A, p. 3; CSWP 36A, pp. 7-8; CSWP 36A, pp. 4-5; CSWP 36A, p. 4",False,1256,7936,9192
+hybrid-500-k5,Q02,direct,answered,correct,1/1 key facts; 4/4 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, p. 2; CSI U/OO/166417-21, p. 2; CSI U/OO/166417-21, p. 2",False,1223,6375,7598
+hybrid-500-k5,Q03,direct,answered,correct,3/3 key facts; 5/5 citations from expected documents,"SP 800-121 Rev. 2, p. 51; SP 800-121 Rev. 2, p. 51; SP 800-121 Rev. 2, pp. 51-52; SP 800-121 Rev. 2, p. 52; CSI U/OO/166417-21, p. 3",False,1172,5632,6804
+hybrid-500-k5,Q04,direct,answered,partial,2/3 key facts; 3/3 citations from expected documents,"CSWP 36B, p. 11; CSWP 36B, pp. 11-12; CSWP 36B, p. 5",False,1246,7943,9189
+hybrid-500-k5,Q05,direct,answered,correct,1/1 key facts; 2/2 citations from expected documents,"SP 800-187, p. 27; SP 800-187, p. 27",False,616,6278,6894
+hybrid-500-k5,Q06,direct,answered,correct,2/2 key facts; 4/4 citations from expected documents,"SP 800-97, p. 39; SP 800-97, p. 71; SP 800-97, p. 100; SP 800-97, p. 114",True,555,7116,7671
+hybrid-500-k5,Q07,multi,answered,partial,1/2 key facts; 5/5 citations from expected documents; cites 1 of the 2 documents needed,"SP 800-121 Rev. 2, p. 6; SP 800-121 Rev. 2, p. 6; SP 800-121 Rev. 2, p. 51; SP 800-121 Rev. 2, p. 52; SP 800-121 Rev. 2, p. 52",False,755,8562,9317
+hybrid-500-k5,Q08,multi,answered,partial,1/3 key facts; 5/5 citations from expected documents,"CSWP 36D, p. 4; CSWP 36D, p. 2; CSWP 36D, pp. 2-3; CSWP 36C, p. 5; CSWP 36C, p. 4",False,719,8239,8958
+hybrid-500-k5,Q09,multi,answered,correct,3/3 key facts; 5/5 citations from expected documents,"CSWP 36D, p. 4; CSWP 36D, p. 2; CSWP 36A, pp. 1-2; CSWP 36C, p. 5; CSWP 36C, p. 4",False,331,11722,12054
+hybrid-500-k5,Q10,paraphrase,answered,correct,2/2 key facts; 3/4 citations from expected documents,"SP 800-121 Rev. 2, pp. 7-8; SP 800-121 Rev. 2, pp. 30-31; SP 800-121 Rev. 2, pp. 11-12; SP 800-153, p. 12",False,809,11100,11909
+hybrid-500-k5,Q11,paraphrase,answered,partial,2/3 key facts; 3/3 citations from expected documents,"SP 800-187, p. 33; CSWP 36A, p. 3; SP 800-187, p. 40",False,260,11018,11279
+hybrid-500-k5,Q12,paraphrase,answered,correct,3/3 key facts; 3/3 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, p. 1; CSI U/OO/166417-21, pp. 5-6",False,260,6328,6588
+hybrid-500-k5,Q13,unanswerable,insufficient,correct,safe response,,False,347,5863,6210
+hybrid-500-k5,Q14,unanswerable,insufficient,correct,safe response,,False,530,10033,10564
+hybrid-500-k5,Q15,ambiguous,answered,correct,1/1 key facts; 5/5 citations from expected documents,"SP 800-97, p. 37; SP 800-97, p. 13; SP 800-97, p. 42; SP 800-97, p. 83; SP 800-121 Rev. 2, p. 56",True,225,10819,11043
+vector-1500-k5,Q01,direct,answered,correct,3/3 key facts; 4/4 citations from expected documents,"CSWP 36A, p. 3; CSWP 36A, pp. 5-6; CSWP 36A, pp. 4-5; CSWP 36A, pp. 3-4",False,576,10694,11270
+vector-1500-k5,Q02,direct,answered,correct,1/1 key facts; 2/2 citations from expected documents,"CSI U/OO/166417-21, pp. 5-6; CSI U/OO/166417-21, p. 2",False,592,8520,9112
+vector-1500-k5,Q03,direct,insufficient,incorrect,refused an answerable question,,False,575,6551,7127
+vector-1500-k5,Q04,direct,answered,correct,3/3 key facts; 2/2 citations from expected documents,"CSWP 36B, pp. 4-5; CSWP 36B, p. 11",False,544,8870,9414
+vector-1500-k5,Q05,direct,answered,correct,1/1 key facts; 2/2 citations from expected documents,"SP 800-187, pp. 27-28; SP 800-187, p. 27",False,148,6404,6552
+vector-1500-k5,Q06,direct,answered,correct,2/2 key facts; 5/5 citations from expected documents,"SP 800-97, p. 39; SP 800-97, p. 33; SP 800-97, p. 151; SP 800-97, pp. 71-73; SP 800-97, pp. 74-75",True,113,7845,7958
+vector-1500-k5,Q07,multi,answered,partial,0/2 key facts; 4/4 citations from expected documents,"SP 800-121 Rev. 2, p. 48; SP 800-121 Rev. 2, p. 59; CSI U/OO/166417-21, pp. 6-7; SP 800-121 Rev. 2, p. 55",False,113,9445,9558
+vector-1500-k5,Q08,multi,answered,correct,3/3 key facts; 4/4 citations from expected documents,"CSWP 36D, p. 4; CSWP 36D, pp. 2-3; CSWP 36C, pp. 6-7; CSWP 36C, pp. 1-2",False,109,12162,12271
+vector-1500-k5,Q09,multi,answered,correct,3/3 key facts; 5/5 citations from expected documents,"CSWP 36C, p. 2; CSWP 36A, p. 2; CSWP 36C, pp. 3-4; CSWP 36A, pp. 1-2; CSWP 36D, pp. 2-3",False,97,11487,11584
+vector-1500-k5,Q10,paraphrase,answered,correct,2/2 key facts; 4/5 citations from expected documents,"SP 800-121 Rev. 2, p. 58; SP 800-121 Rev. 2, pp. 7-9; SP 800-153, p. 12; SP 800-121 Rev. 2, p. 48; SP 800-121 Rev. 2, pp. 30-31",False,128,10890,11019
+vector-1500-k5,Q11,paraphrase,answered,correct,3/3 key facts; 4/4 citations from expected documents,"SP 800-187, pp. 32-33; CSWP 36A, p. 3; SP 800-187, pp. 32-33; SP 800-187, p. 40",False,627,13060,13687
+vector-1500-k5,Q12,paraphrase,answered,correct,3/3 key facts; 3/3 citations from expected documents,"CSI U/OO/166417-21, pp. 5-6; CSI U/OO/166417-21, pp. 1-2; CSI U/OO/166417-21, p. 2",False,282,8350,8633
+vector-1500-k5,Q13,unanswerable,insufficient,correct,safe response,,False,180,5581,5761
+vector-1500-k5,Q14,unanswerable,insufficient,correct,safe response,,False,191,10383,10573
+vector-1500-k5,Q15,ambiguous,answered,correct,1/1 key facts; 5/5 citations from expected documents,"SP 800-97, p. 34; SP 800-97, pp. 65-66; SP 800-97, p. 151; SP 800-97, p. 79; SP 800-97, p. 65",True,136,10725,10862
+vector-500-k3,Q01,direct,answered,correct,3/3 key facts; 2/2 citations from expected documents,"CSWP 36A, p. 3; CSWP 36A, pp. 4-5",False,843,9807,10651
+vector-500-k3,Q02,direct,insufficient,incorrect,refused an answerable question,,False,692,7050,7742
+vector-500-k3,Q03,direct,answered,correct,3/3 key facts; 2/2 citations from expected documents,"SP 800-121 Rev. 2, p. 51; CSI U/OO/166417-21, p. 3",False,815,6279,7094
+vector-500-k3,Q04,direct,answered,partial,2/3 key facts; 3/3 citations from expected documents,"CSWP 36B, p. 11; CSWP 36B, pp. 11-12; CSWP 36B, p. 2",False,832,7804,8636
+vector-500-k3,Q05,direct,answered,partial,0/1 key facts; 2/2 citations from expected documents,"SP 800-187, p. 27; SP 800-187, pp. 27-28",False,160,6401,6561
+vector-500-k3,Q06,direct,answered,correct,2/2 key facts; 3/3 citations from expected documents,"SP 800-97, p. 39; SP 800-97, p. 71; SP 800-97, p. 154",True,301,6268,6569
+vector-500-k3,Q07,multi,answered,partial,0/2 key facts; 3/3 citations from expected documents; cites 1 of the 2 documents needed,"SP 800-121 Rev. 2, p. 6; SP 800-121 Rev. 2, p. 52; SP 800-121 Rev. 2, p. 53",False,233,7680,7913
+vector-500-k3,Q08,multi,answered,partial,2/3 key facts; 3/3 citations from expected documents,"CSWP 36D, p. 2; CSWP 36C, p. 2; CSWP 36A, p. 10",False,149,8285,8434
+vector-500-k3,Q09,multi,answered,correct,3/3 key facts; 3/3 citations from expected documents,"CSWP 36A, pp. 1-2; CSWP 36A, p. 10; CSWP 36C, p. 5",False,115,11294,11409
+vector-500-k3,Q10,paraphrase,answered,correct,2/2 key facts; 2/3 citations from expected documents,"SP 800-121 Rev. 2, p. 52; SP 800-121 Rev. 2, p. 58; SP 800-153, p. 12",False,106,7907,8013
+vector-500-k3,Q11,paraphrase,answered,partial,2/3 key facts; 3/3 citations from expected documents,"SP 800-187, p. 33; SP 800-187, p. 40; CSWP 36A, p. 3",False,116,9772,9888
+vector-500-k3,Q12,paraphrase,answered,correct,3/3 key facts; 2/2 citations from expected documents,"CSI U/OO/166417-21, p. 5; CSI U/OO/166417-21, p. 2",False,109,5700,5810
+vector-500-k3,Q13,unanswerable,insufficient,correct,safe response,,False,99,4542,4641
+vector-500-k3,Q14,unanswerable,insufficient,correct,safe response,,False,117,7110,7227
+vector-500-k3,Q15,ambiguous,answered,correct,1/1 key facts; 3/3 citations from expected documents,"SP 800-97, p. 37; SP 800-97, p. 13; SP 800-97, p. 83",True,115,8559,8674

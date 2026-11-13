@@ -1,3 +1,5 @@
-pypdf
-chromadb
-mcp[cli]<2
+pypdf>=5
+chromadb>=1.0
+mcp[cli]>=1.2,<2
+anthropic>=1.0
+streamlit>=1.40

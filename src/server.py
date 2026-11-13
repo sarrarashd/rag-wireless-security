@@ -3,7 +3,8 @@ import sqlite3
 
 from mcp.server.fastmcp import FastMCP
 
-from search import DB_PATH, keyword_search, search
+from config import CHUNK_SIZES, DB_PATH
+from search import MODES, retrieve
 
 mcp = FastMCP(
     "wisec-assistant",
@@ -44,15 +45,18 @@ def search_documents(query: str, k: int = 5, mode: str = "vector", chunk_size: i
     Args:
         query: The question or topic, in plain English.
         k: Number of passages to return, from 1 to 10.
-        mode: "vector" for semantic search by meaning (default), or "keyword" for exact-word search.
+        mode: "vector" for semantic search by meaning (default), "keyword" for exact-word
+            search, or "hybrid" to combine both rankings.
         chunk_size: 500 for short, precise passages (default) or 1500 for longer passages with more context.
     """
-    if mode not in ("vector", "keyword"):
-        raise ValueError('mode must be "vector" or "keyword"')
-    if chunk_size not in (500, 1500):
+    if mode not in MODES:
+        raise ValueError('mode must be "vector", "keyword" or "hybrid"')
+    if chunk_size not in CHUNK_SIZES:
         raise ValueError("chunk_size must be 500 or 1500")
+    if not query.strip():
+        raise ValueError("query is empty")
     k = max(1, min(int(k), 10))
-    hits = search(query, k, chunk_size) if mode == "vector" else keyword_search(query, k, chunk_size)
+    hits = retrieve(query, k, chunk_size, mode)
     return {
         "query": query,
         "mode": mode,
@@ -103,8 +107,12 @@ def get_document(document: str, page_start: int | None = None, page_end: int | N
             reason = "matches several documents" if matches else "was not found"
             raise ValueError(f'Document "{document}" {reason}. Available: {", ".join(options)}')
 
-    first = page_start or 1
+    first = max(1, page_start or 1)
     last = page_end or page_start or doc["num_pages"] or 10**6
+    if last < first:
+        conn.close()
+        raise ValueError("page_end must not be smaller than page_start")
+    max_chars = max(200, int(max_chars))
     rows = conn.execute(
         """SELECT text FROM chunks
            WHERE doc_id = ? AND chunk_size = 1500 AND page_end >= ? AND page_start <= ?
@@ -147,26 +155,38 @@ def list_documents() -> list[dict]:
 
 
 @mcp.tool()
-def provide_feedback(question: str, answer: str, rating: int, cited_chunks: str = "") -> dict:
+def provide_feedback(rating: int, question: str = "", answer: str = "", cited_chunks: str = "",
+                     query_id: int | None = None) -> dict:
     """Record feedback on an answer, for evaluation.
 
     Args:
-        question: The question that was asked.
-        answer: The answer that was given.
         rating: 1 = helpful, 0 = partly helpful, -1 = not helpful.
+        question: The question that was asked (required unless query_id is given).
+        answer: The answer that was given.
         cited_chunks: Optional comma-separated chunk IDs that the answer cited.
+        query_id: ID of an answer already saved in the query log; its rating is updated
+            instead of creating a new entry.
     """
     if rating not in (-1, 0, 1):
         raise ValueError("rating must be -1, 0 or 1")
     conn = _connect()
-    cur = conn.execute(
-        "INSERT INTO query_log (question, answer, cited_chunks, feedback) VALUES (?, ?, ?, ?)",
-        (question, answer, cited_chunks, rating),
-    )
+    if query_id is not None:
+        cur = conn.execute("UPDATE query_log SET feedback = ? WHERE query_id = ?", (rating, query_id))
+        if cur.rowcount == 0:
+            conn.close()
+            raise ValueError(f"query_id {query_id} was not found in the query log")
+    else:
+        if not question.strip():
+            conn.close()
+            raise ValueError("question is required when query_id is not given")
+        cur = conn.execute(
+            "INSERT INTO query_log (question, answer, cited_chunks, feedback) VALUES (?, ?, ?, ?)",
+            (question, answer, cited_chunks, rating),
+        )
+        query_id = cur.lastrowid
     conn.commit()
-    query_id = cur.lastrowid
     conn.close()
-    return {"saved": True, "query_id": query_id}
+    return {"saved": True, "query_id": query_id, "rating": rating}
 
 
 if __name__ == "__main__":

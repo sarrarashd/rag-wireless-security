@@ -1,0 +1,2304 @@
+{
+  "vector-500-k5": [
+    {
+      "id": "Q01",
+      "type": "direct",
+      "question": "What does SUCI stand for and what problem does it solve?",
+      "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "SUCI stands for Subscription Concealed Identifier, an optional 5G feature supported since 3GPP Release 15 in 2019 [1]. It addresses the risk of a device sending its permanent subscriber identity (the SUPI) in clear text, for example to an attacker's malicious network [1]. SUCI encrypts the SUPI with the home operator's public key, producing a ciphered identity that is always unique, so an attacker cannot correlate it to the subscriber [1]. The encryption uses the Elliptic Curve Integrated Encryption Scheme (ECIES), with two defined parameter sets, Profile A and Profile B [4].\n\nSUCI protects 5G subscriber information only when the device connects to 5G networks. It offers no protection on earlier generations such as 4G LTE [2]. The passages don't describe in full how the attacker draws the device to its network, because the text describing that attack is cut off before the point where it starts [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3",
+        "CSWP 36A, p. 6",
+        "CSWP 36A, pp. 4-5"
+      ],
+      "retrieved": [
+        "CSWP 36A p.3 (score 0.514)",
+        "CSWP 36A p.4 (score 0.511)",
+        "CSWP 36A p.5 (score 0.497)",
+        "CSWP 36A p.6 (score 0.493)",
+        "CSWP 36C p.4 (score 0.46)"
+      ],
+      "timing": {
+        "retrieval_ms": 987,
+        "generation_ms": 9680,
+        "total_ms": 10668
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q02",
+      "type": "direct",
+      "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+      "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots.",
+      "status": "insufficient",
+      "auto_verdict": "incorrect",
+      "notes": "refused an answerable question",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages do not name a minimum Wi-Fi encryption standard for public networks; they warn that a password-protected public network may still not encrypt traffic, and that encrypted traffic can be decrypted by anyone who knows the pre-shared key, so the NSA strongly advises using a personal or corporate-provided VPN [2][5]",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.21 (score 0.641)",
+        "CSI U/OO/166417-21 p.2 (score 0.615)",
+        "SP 800-97 p.98 (score 0.605)",
+        "SP 800-97 p.98 (score 0.555)",
+        "CSI U/OO/166417-21 p.2 (score 0.555)"
+      ],
+      "timing": {
+        "retrieval_ms": 735,
+        "generation_ms": 9668,
+        "total_ms": 10403
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q03",
+      "type": "direct",
+      "question": "What is bluesnarfing?",
+      "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "Bluesnarfing is a Bluetooth-specific attack that lets an attacker gain access to a Bluetooth-enabled device by exploiting a firmware flaw in older devices from around 2003 [1]. The attack forces a connection to the device, which gives the attacker access to data stored on it, including the device's international mobile equipment identity (IMEI) [1].\n\nNIST lists bluesnarfing among the attacks specific to Bluetooth, separate from general wireless threats such as eavesdropping and denial of service [4]. NSA guidance also names it, along with bluejacking and bluebugging, as a Bluetooth compromise technique that poses a threat in public settings, where it can be used to send, collect, or manipulate data and services on a device [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 51",
+        "SP 800-121 Rev. 2, p. 51",
+        "CSI U/OO/166417-21, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.51 (score 0.524)",
+        "SP 800-121 Rev. 2 p.51 (score 0.491)",
+        "CSI U/OO/166417-21 p.3 (score 0.429)",
+        "SP 800-121 Rev. 2 p.51 (score 0.421)",
+        "SP 800-121 Rev. 2 p.52 (score 0.395)"
+      ],
+      "timing": {
+        "retrieval_ms": 930,
+        "generation_ms": 6804,
+        "total_ms": 7735
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q04",
+      "type": "direct",
+      "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+      "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "In the white paper, the remote attestation service (RAS) is the component that 5G servers report their trust values to. Remote attestation is the mechanism that lets each server send its trust values to the RAS, and the RAS collects and aggregates the trust measurements from all the servers in the 5G environment [1]. Each server sends its platform integrity measurements to the RAS, which then evaluates that server's trust status [2]. The paper shows remote attestation presenting the trust status of all 5G servers in the NCCoE 5G Lab, including an individual server's status when that server is selected [2].\n\nThe measurements the RAS works with come from cryptographically measuring a server's hardware, firmware, and software in sequence and storing the results in a secure element such as a Trusted Platform Module (TPM). If the measurements have not changed, there is assurance that the hardware and firmware have not been altered by an attacker [4]. The paper also notes that failures in attestation status would require forensic analysis [2]. It cites an IETF remote attestation procedure architecture for networked systems as applicable in the 5G environment [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36B, p. 11",
+        "CSWP 36B, pp. 11-12",
+        "CSWP 36B, p. 4"
+      ],
+      "retrieved": [
+        "CSWP 36B p.11 (score 0.714)",
+        "CSWP 36B p.11 (score 0.664)",
+        "CSWP 36B p.2 (score 0.617)",
+        "CSWP 36B p.4 (score 0.571)",
+        "CSWP 36 p.4 (score 0.561)"
+      ],
+      "timing": {
+        "retrieval_ms": 992,
+        "generation_ms": 8234,
+        "total_ms": 9227
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q05",
+      "type": "direct",
+      "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+      "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "0/1 key facts; 3/3 citations from expected documents",
+      "answer": "The passages do not name the specific key that protects the new session after a handover. They describe only how handover keying works in general.\n\nWhen a handover occurs, new keys are generated, which partly separates the new session from the previous one. However, a new master session key (KASME) is not generated [2]. With an X2 handover, fresh keying material can only be provided after the handover, for use in the next handover [2]. The new eNodeB is not meant to have knowledge of the keys used in the original eNodeB session [1]. All LTE keys ultimately derive from the pre-shared secret key K, which is stored in the USIM on the UICC and in the carrier's HSS/AuC [4].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 27",
+        "SP 800-187, pp. 27-28",
+        "SP 800-187, p. 36"
+      ],
+      "retrieved": [
+        "SP 800-187 p.27 (score 0.642)",
+        "SP 800-187 p.27 (score 0.566)",
+        "SP 800-187 p.18 (score 0.561)",
+        "SP 800-187 p.36 (score 0.561)",
+        "SP 800-187 p.38 (score 0.541)"
+      ],
+      "timing": {
+        "retrieval_ms": 219,
+        "generation_ms": 6788,
+        "total_ms": 7007
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q06",
+      "type": "direct",
+      "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+      "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 3/3 citations from expected documents",
+      "answer": "The 4-Way Handshake in IEEE 802.11i takes place after authentication and positions cryptographic keys in both the station (STA) and the access point (AP) [5][1]. It has three main purposes: it confirms that both parties hold a pairwise master key (PMK), it synchronizes the installation of temporal keys, and it confirms the selection of cipher suites [2]. To build and check the four frames they exchange, the STA and AP each perform several computations [1]. When the handshake succeeds, the AP and STA have been mutually authenticated, and the IEEE 802.1X controlled ports open to let data traffic flow [1]. If it fails, both sides can remove the associated cached PMKSA [5].\n\nAll of these passages come from NIST SP 800-97 (2007), which is marked as withdrawn, so you may want to check current guidance before relying on it.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, pp. 70-71",
+        "SP 800-97, p. 71",
+        "SP 800-97, p. 39"
+      ],
+      "retrieved": [
+        "SP 800-97 p.71 (score 0.63)",
+        "SP 800-97 p.39 (score 0.621)",
+        "SP 800-97 p.154 (score 0.603)",
+        "SP 800-97 p.114 (score 0.6)",
+        "SP 800-97 p.70 (score 0.59)"
+      ],
+      "timing": {
+        "retrieval_ms": 117,
+        "generation_ms": 6148,
+        "total_ms": 6265
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q07",
+      "type": "multi",
+      "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+      "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA).",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "0/2 key facts; 4/4 citations from expected documents; cites 1 of the 2 documents needed",
+      "answer": "Bluetooth devices face the general wireless threats of denial of service (DoS), eavesdropping, man-in-the-middle (MITM) attacks, message modification, and resource misappropriation [2]. They also face attacks that target known vulnerabilities in Bluetooth implementations and specifications [2]. A DoS attack can make a device's Bluetooth interface unusable and drain its battery. These attacks are not considered significant, and you can usually avoid one by moving out of range, because Bluetooth only works at short distances [3]. Fuzzing attacks are also named as a threat, but the passages do not describe them [3]. One passage also mentions eavesdropping on audio from a car's microphone, but only part of that example is included [3].\n\nThe passages give little specific advice for protecting a personal device in public places. They say that countermeasures range from distance and power output to general operating practices [5], and that moving out of range defeats DoS attacks [3]. Most of the other guidance is for organizations: documented security policies on Bluetooth use and user responsibilities, plus awareness training [1]. The detailed countermeasure checklist in Section 4.4 of SP 800-121 Rev. 2 is referred to but not included in the passages [5], so I can't give its specific steps here.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 6",
+        "SP 800-121 Rev. 2, p. 52",
+        "SP 800-121 Rev. 2, p. 53",
+        "SP 800-121 Rev. 2, p. 53"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.53 (score 0.73)",
+        "SP 800-121 Rev. 2 p.6 (score 0.721)",
+        "SP 800-121 Rev. 2 p.52 (score 0.711)",
+        "SP 800-121 Rev. 2 p.48 (score 0.71)",
+        "SP 800-121 Rev. 2 p.53 (score 0.707)"
+      ],
+      "timing": {
+        "retrieval_ms": 121,
+        "generation_ms": 8806,
+        "total_ms": 8927
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q08",
+      "type": "multi",
+      "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+      "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 5/5 citations from expected documents",
+      "answer": "In 5G, the standards protect subscriber confidentiality by paging with a temporary identity (ID) instead of the Subscription Permanent Identifier (SUPI) [1]. They also explicitly define when that temporary ID must be reallocated (refreshed), which helps keep users from being identified and located by an attacker [1][2]. In effect, 5G removes the SUPI from the paging protocol [4]. Operators and organizations using 5G are encouraged to verify that paging actually works as the standards describe [1].\n\nEarlier generations, including 4G/LTE, often paged subscribers with permanent or quasi-permanent IDs, which exposed them to cybersecurity and privacy risks [4]. In 4G, capturing subscriber identifiers is known as IMSI catching [5]. The passages do not explain how the Subscription Concealed Identifier (SUCI) conceals the SUPI over the air; they only name SUCI in a document title and reference list [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 2",
+        "CSWP 36C, p. 2",
+        "CSWP 36D, pp. 2-3",
+        "CSWP 36A, p. 3",
+        "CSWP 36A, p. 10"
+      ],
+      "retrieved": [
+        "CSWP 36D p.2 (score 0.698)",
+        "CSWP 36C p.2 (score 0.652)",
+        "CSWP 36A p.10 (score 0.648)",
+        "CSWP 36D p.2 (score 0.648)",
+        "CSWP 36A p.3 (score 0.636)"
+      ],
+      "timing": {
+        "retrieval_ms": 141,
+        "generation_ms": 7717,
+        "total_ms": 7858
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q09",
+      "type": "multi",
+      "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+      "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D).",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 4/4 citations from expected documents",
+      "answer": "A 5G network uses these identifiers for a subscriber:\n\n- **SUPI (Subscription Permanent Identifier):** This is the permanent identifier used to manage each subscription, and it is written into the SIM provided by the operator [4]. To keep it from being used for tracking, 5G standards require paging to use a temporary ID instead of the SUPI. This differs from previous generations of cellular systems [5].\n- **SUCI (Subscription Concealed Identifier):** SUCI protection provides important security and privacy protections for subscriber identifiers. However, 5G standards define it as an optional capability for operator deployments, so it protects subscribers only if the operator enables it [1].\n- **5G-GUTI and 5G-TMSI:** The 5G-GUTI is a temporary identity assigned and maintained by the serving AMF, which may be in a visited network when roaming. It consists of the home network's Mobile Country Code and Mobile Network Code, the AMF Identifier, and the 5G-TMSI [3]. 5G standards explicitly define when the temporary ID must be reallocated (refreshed), which protects users from being identified and located by an attacker [5]. Operators and organizations using 5G are encouraged to verify that paging works as the standards describe [5].\n\nThe passages do not explain how SUCI conceals the SUPI, such as the encryption scheme. They also do not give the specific events that trigger reallocation of the temporary ID.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 4",
+        "CSWP 36D, p. 2",
+        "CSWP 36A, pp. 1-2",
+        "CSWP 36C, p. 5"
+      ],
+      "retrieved": [
+        "CSWP 36A p.1 (score 0.729)",
+        "CSWP 36A p.10 (score 0.701)",
+        "CSWP 36C p.5 (score 0.692)",
+        "CSWP 36D p.4 (score 0.667)",
+        "CSWP 36D p.2 (score 0.659)"
+      ],
+      "timing": {
+        "retrieval_ms": 103,
+        "generation_ms": 10758,
+        "total_ms": 10861
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q10",
+      "type": "paraphrase",
+      "question": "Is it safe to pair my wireless headphones?",
+      "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 4/5 citations from expected documents",
+      "answer": "The passages don't give a simple yes or no, and they say nothing about your particular headphones or which pairing method they use. Assuming they are Bluetooth, risk depends largely on the pairing method. PIN/Legacy Pairing (Bluetooth 2.0 and earlier) and low energy Legacy Pairing are susceptible to eavesdropping attacks [2]. For low energy connections in Bluetooth 4.2, NIST considers the mode with authenticated pairing and encryption (AES-CMAC and P-256 elliptic curve for pairing, AES-CCM for encryption) the most secure and strongly recommends it [4].\n\nTo reduce risk, pair as infrequently as possible, ideally in a secure area where attackers cannot observe passkey entry or intercept pairing messages [3]. Since headsets often can't disable Bluetooth on their own, shut the whole device off when not in use [3]. Keeping Bluetooth enabled in public places is a risk because attackers can scan for active Bluetooth signals and may learn information about your device [5]. If your phone or laptop connects to the headphones and another network at the same time, the security of that setup depends on the security of all the networks involved [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 52",
+        "SP 800-121 Rev. 2, pp. 11-12",
+        "SP 800-121 Rev. 2, p. 58",
+        "CSI U/OO/166417-21, p. 3",
+        "SP 800-153, p. 12"
+      ],
+      "retrieved": [
+        "SP 800-153 p.12 (score 0.464)",
+        "SP 800-121 Rev. 2 p.52 (score 0.44)",
+        "SP 800-121 Rev. 2 p.58 (score 0.434)",
+        "SP 800-121 Rev. 2 p.11 (score 0.417)",
+        "CSI U/OO/166417-21 p.3 (score 0.412)"
+      ],
+      "timing": {
+        "retrieval_ms": 131,
+        "generation_ms": 11403,
+        "total_ms": 11534
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q11",
+      "type": "paraphrase",
+      "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+      "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 5/5 citations from expected documents",
+      "answer": "**Yes, the passages describe this risk.** \"Fake cell tower\" covers more than one network type, so here is what they say for LTE and for 5G.\n\n**LTE:** A rogue base station can expose who owns a handset and where the device is located [1]. Because people keep their phones close, an attacker intercepting traffic near your home may be able to tell whether a specific person lives there [1][4]. The data needed for geolocation is available on signaling channels and is sent over the air when the handset attaches and authenticates [4]. A high-power rogue base station can also force a phone to downgrade to GSM or UMTS [4]. Mobile apps can try to detect rogue base stations by checking broadcast information against known-good values, though they often need specific chipsets on older devices [3].\n\n**5G:** If a subscriber identifier is sent unprotected over the air from the device to the cell tower, eavesdroppers can intercept it and track the subscriber's location and movements [2]. NIST's guidance on the Subscription Concealed Identifier (SUCI) addresses this risk, but the excerpt shown does not explain how SUCI protects the identifier [2]. 5G also reassigns temporary identities (5G-GUTIs). This weakens the link between a subscriber and their phone's identifiers and makes tracking harder, if implemented and configured correctly [5]. The passages do not say how well these 5G protections work against a fake tower specifically.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 33",
+        "SP 800-187, p. 33",
+        "SP 800-187, p. 40",
+        "CSWP 36A, p. 3",
+        "CSWP 36C, p. 4"
+      ],
+      "retrieved": [
+        "SP 800-187 p.33 (score 0.597)",
+        "CSWP 36A p.3 (score 0.573)",
+        "SP 800-187 p.40 (score 0.519)",
+        "SP 800-187 p.33 (score 0.497)",
+        "CSWP 36C p.4 (score 0.496)"
+      ],
+      "timing": {
+        "retrieval_ms": 118,
+        "generation_ms": 11451,
+        "total_ms": 11569
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q12",
+      "type": "paraphrase",
+      "question": "Should I check my bank account on the free internet at a coffee shop?",
+      "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "No, it's best not to. NSA guidance advises avoiding access to personal data such as bank accounts, and avoiding financial transactions, when you're on public Wi-Fi [1]. Public Wi-Fi is often not configured securely [4], and data sent over it is vulnerable to theft or manipulation. That risk is higher on open networks that don't require a password, which is common for free coffee shop Wi-Fi [3]. The same guidance says not to enter your most sensitive account passwords on public networks [1].\n\nIf you need to check your account while out, the guidance recommends using a corporate or personal Wi-Fi hotspot with strong authentication and encryption instead [3]. If you do connect to public Wi-Fi, don't click unexpected links, attachments or pop-ups [1]. On a laptop, don't set the public network as a trusted network, and don't browse using the device's administrator account [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, p. 1",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.5 (score 0.385)",
+        "CSI U/OO/166417-21 p.1 (score 0.347)",
+        "CSI U/OO/166417-21 p.2 (score 0.336)",
+        "CSI U/OO/166417-21 p.1 (score 0.332)",
+        "SP 800-97 p.129 (score 0.327)"
+      ],
+      "timing": {
+        "retrieval_ms": 117,
+        "generation_ms": 7130,
+        "total_ms": 7247
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "question": "What security improvements does WPA3 bring over WPA2?",
+      "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages, all from the withdrawn 2007 SP 800-97, cover only WPA and WPA2 and never mention WPA3, so they cannot say what WPA3 improves over WPA2",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.99 (score 0.673)",
+        "SP 800-97 p.102 (score 0.668)",
+        "SP 800-97 p.150 (score 0.636)",
+        "SP 800-97 p.150 (score 0.621)",
+        "SP 800-97 p.100 (score 0.621)"
+      ],
+      "timing": {
+        "retrieval_ms": 194,
+        "generation_ms": 6458,
+        "total_ms": 6653
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q14",
+      "type": "unanswerable",
+      "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+      "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages contain no Cisco Catalyst 9800 configuration steps; the closest material is general policy advice that a WLAN policy should state whether guests have access and which resources they may use, such as allowing Internet access but not internal database servers [2]",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.6 (score 0.478)",
+        "SP 800-97 p.106 (score 0.359)",
+        "SP 800-187 p.45 (score 0.358)",
+        "SP 800-97 p.21 (score 0.357)",
+        "SP 800-97 p.12 (score 0.357)"
+      ],
+      "timing": {
+        "retrieval_ms": 189,
+        "generation_ms": 8027,
+        "total_ms": 8216
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q15",
+      "type": "ambiguous",
+      "question": "How does authentication work?",
+      "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 5/5 citations from expected documents",
+      "answer": "Your question could apply to Wi-Fi, Bluetooth, LTE or 5G, but these passages cover only **Wi-Fi (IEEE 802.11i robust security networks using IEEE 802.1X)**. They come from SP 800-97 (2007), which is marked as withdrawn, so check for current guidance.\n\nIn this model, authentication involves three roles. The **supplicant** is the entity being authenticated, typically the wireless station (STA) [1][5]. The **authenticator**, such as an access point (AP), sits at one end of a point-to-point LAN segment and facilitates the authentication attempt [1][5]. The **authentication server (AS)** provides the authentication service to the authenticator [1][5]. The STA and AS carry out the actual authentication using the Extensible Authentication Protocol (EAP) [4].\n\nEAP is a framework that supports many methods. These include static passwords, dynamic passwords, public key certificates, smart cards and tokens [3][4]. Methods can also be combined, such as a certificate followed by a password [3], or TLS authentication coupled with additional EAP methods [2]. This flexibility lets EAP fit nearly any environment a WLAN connects to [3]. Once authentication completes, an AAA key is installed in the STA and the AS. It serves as a root key for generating the other keys that secure communications between the STA and the AP [4].\n\nThe passages do not describe authentication for Bluetooth, LTE or 5G.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 37",
+        "SP 800-97, p. 34",
+        "SP 800-97, p. 151",
+        "SP 800-97, p. 13",
+        "SP 800-97, p. 83"
+      ],
+      "retrieved": [
+        "SP 800-97 p.37 (score 0.629)",
+        "SP 800-97 p.83 (score 0.612)",
+        "SP 800-97 p.13 (score 0.605)",
+        "SP 800-97 p.151 (score 0.603)",
+        "SP 800-97 p.34 (score 0.601)"
+      ],
+      "timing": {
+        "retrieval_ms": 195,
+        "generation_ms": 8261,
+        "total_ms": 8457
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    }
+  ],
+  "keyword-500-k5": [
+    {
+      "id": "Q01",
+      "type": "direct",
+      "question": "What does SUCI stand for and what problem does it solve?",
+      "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "SUCI stands for Subscription Concealed Identifier. Starting with 3GPP release 15 in 2019, 5G standards support it as an optional feature that encrypts the subscriber's SUPI with the home operator's public key [4].\n\nIt addresses the risk that a device could be lured to a malicious network and send its SUPI in clear text [4]. The SUCI is an encrypted version of the subscriber's identity that is always unique, so an attacker who sees it cannot link it to the subscriber [4]. A 2021 CSRIC report recommends that U.S. operators use SUCI. It also says they should not use a null encryption scheme, except when the 5G device is unknown to the operator and is requesting emergency services [5]. To confirm protection is in place, operators should check three things [5]:\n\n- Their 5G equipment vendors support SUCI.\n- SUCI is enabled on their 5G networks.\n- SUCI information is available on subscribers' SIMs.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3",
+        "CSWP 36A, p. 4"
+      ],
+      "retrieved": [
+        "SP 800-97 p.143 (score 12.63)",
+        "SP 800-97 p.143 (score 12.2)",
+        "SP 800-97 p.154 (score 10.46)",
+        "CSWP 36A p.3 (score 10.15)",
+        "CSWP 36A p.4 (score 7.07)"
+      ],
+      "timing": {
+        "retrieval_ms": 8,
+        "generation_ms": 8284,
+        "total_ms": 8292
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q02",
+      "type": "direct",
+      "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+      "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 3/3 citations from expected documents",
+      "answer": "The NSA says to connect only to public Wi-Fi networks that use WPA2 encryption at a minimum [5]. Its guidance is to connect only to secure public Wi-Fi, which usually means a network that needs a password or another form of authentication so fewer people can connect [5]. It also advises against connecting to open Wi-Fi hotspots [5]. Open public Wi-Fi with no password is especially exposed: data sent over it can be stolen or altered [3].\n\nThe NSA adds two precautions. First, use a personal or corporate virtual private network (VPN) when you connect to public Wi-Fi [2]. Second, where possible, use a corporate or personal Wi-Fi hotspot with strong authentication and encryption instead, because that is more secure [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, p. 2",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.8 (score 19.19)",
+        "CSI U/OO/166417-21 p.2 (score 18.8)",
+        "CSI U/OO/166417-21 p.2 (score 18.58)",
+        "CSI U/OO/166417-21 p.8 (score 18.29)",
+        "CSI U/OO/166417-21 p.5 (score 17.45)"
+      ],
+      "timing": {
+        "retrieval_ms": 16,
+        "generation_ms": 6302,
+        "total_ms": 6319
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q03",
+      "type": "direct",
+      "question": "What is bluesnarfing?",
+      "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "Bluesnarfing is a Bluetooth-specific attack that lets an attacker gain access to a Bluetooth-enabled device by exploiting a firmware flaw in older (circa 2003) devices [4]. The attack forces a connection to the Bluetooth device, giving access to data stored on it, including the device's international mobile equipment identity (IMEI) [4].\n\nNSA guidance lists bluesnarfing alongside Bluejacking and Bluebugging as Bluetooth compromise techniques that pose a threat in public settings. These techniques are used to send, collect, or manipulate data and services on a device [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 51",
+        "CSI U/OO/166417-21, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.51 (score 7.35)",
+        "CSI U/OO/166417-21 p.3 (score 7.35)",
+        "SP 800-121 Rev. 2 p.51 (score 7.31)",
+        "SP 800-121 Rev. 2 p.51 (score 7.21)"
+      ],
+      "timing": {
+        "retrieval_ms": 3,
+        "generation_ms": 6189,
+        "total_ms": 6192
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q04",
+      "type": "direct",
+      "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+      "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 4/4 citations from expected documents",
+      "answer": "In NIST CSWP 36B, remote attestation checks each server's integrity measurements and assigned labels against policies [3]. The integrity measurements are taken at each boot, and the labels are asset tags stored in the hardware root of trust (HRoT) [3][5]. The attestation results are made available to workload orchestrators, which use them as factors in deciding where to place workloads [5]. This lets 5G workload orchestration enforce the trust status of the host platform [3].\n\nThe paper presents remote attestation, together with HRoT, as a way to mitigate specific threats in computing environments and build trust in a 5G system's server infrastructure [1][2]. The passages don't describe how the attestation service is built, such as its components, protocols, or the contents of the policies.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36B, p. 5",
+        "CSWP 36B, p. 14",
+        "CSWP 36B, p. 2",
+        "CSWP 36B, pp. 1-2"
+      ],
+      "retrieved": [
+        "CSWP 36B p.2 (score 24.35)",
+        "CSWP 36B p.1 (score 23.32)",
+        "CSWP 36B p.5 (score 19.98)",
+        "CSWP 36B p.16 (score 18.93)",
+        "CSWP 36B p.14 (score 18.11)"
+      ],
+      "timing": {
+        "retrieval_ms": 13,
+        "generation_ms": 7263,
+        "total_ms": 7276
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q05",
+      "type": "direct",
+      "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+      "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 2/2 citations from expected documents",
+      "answer": "After a handover to a new eNodeB, the new session is protected by **KeNB\\***. It is derived from the existing KeNB together with other cryptographic parameters and the cell ID of the new eNodeB [1]. The source base station and the MME control this key derivation, and the new eNodeB is not meant to know the keys used in the original eNodeB session [1].\n\nHandover creates new keys, which partly separates the new session from the previous one. However, a new master session key (KASME) is not generated [1][2]. With an X2 handover, fresh keying material can only be provided after the handover, for use in the next handover [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 27",
+        "SP 800-187, p. 27"
+      ],
+      "retrieved": [
+        "SP 800-187 p.27 (score 28.29)",
+        "SP 800-187 p.27 (score 25.91)",
+        "SP 800-187 p.27 (score 16.46)",
+        "SP 800-187 p.13 (score 15.06)",
+        "SP 800-187 p.16 (score 15.02)"
+      ],
+      "timing": {
+        "retrieval_ms": 4,
+        "generation_ms": 6906,
+        "total_ms": 6909
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q06",
+      "type": "direct",
+      "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+      "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 5/5 citations from expected documents",
+      "answer": "The 4-Way Handshake establishes an RSN Association (RSNA), which is the security relationship between communicating IEEE 802.11 entities in a Robust Security Network [3][4]. During the handshake, it:\n\n- validates that both parties possess a pairwise master key (PMK),\n- synchronizes the installation of temporal keys, and\n- confirms the selection of cipher suites [5].\n\nThese RSNAs protect data frames and give stronger security than the flawed WEP [4]. The PMK that the handshake validates underpins several security features that WEP lacked [5]. WPA also relies on key generation and distribution based on this handshake, although WPA's version differs from IEEE 802.11i in some subtle ways [1][2].\n\nAll of these passages come from NIST SP 800-97 (2007), which is marked as withdrawn, so you may want to check current guidance.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 39",
+        "SP 800-97, p. 148",
+        "SP 800-97, p. 39",
+        "SP 800-97, p. 100",
+        "SP 800-97, p. 100"
+      ],
+      "retrieved": [
+        "SP 800-97 p.100 (score 17.41)",
+        "SP 800-97 p.100 (score 17.01)",
+        "SP 800-97 p.39 (score 16.58)",
+        "SP 800-97 p.148 (score 16.57)",
+        "SP 800-97 p.39 (score 16.34)"
+      ],
+      "timing": {
+        "retrieval_ms": 3,
+        "generation_ms": 6429,
+        "total_ms": 6432
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q07",
+      "type": "multi",
+      "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+      "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA).",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "1/2 key facts; 3/3 citations from expected documents",
+      "answer": "Bluetooth devices face general wireless threats, including denial of service (DoS), eavesdropping, man-in-the-middle (MITM) attacks, message modification and resource misappropriation [3]. They also face attacks that target known flaws in Bluetooth implementations and specifications [3]. One named example is **bluebugging**, which exploits a firmware flaw in some older Bluetooth devices from around 2004 [1]. It lets an attacker use the device's commands without the user knowing, for example to access data, place calls, eavesdrop on calls and send messages [1]. The passages also mention **bluejacking** (messages sent with harmful intent) and **Car Whisperer**, but they don't describe either one [1].\n\nThe passages don't tell you how to protect your Bluetooth devices in public places. The excerpt from the NSA guidance on securing wireless devices in public settings contains only its reference list, about public Wi-Fi, and no recommendations [2]. A passage that does give that guidance would be needed to answer this part.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 6",
+        "SP 800-121 Rev. 2, p. 52",
+        "CSI U/OO/166417-21, p. 8"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.52 (score 10.59)",
+        "CSI U/OO/166417-21 p.8 (score 10.22)",
+        "SP 800-121 Rev. 2 p.6 (score 9.72)",
+        "SP 800-97 p.154 (score 9.69)",
+        "SP 800-121 Rev. 2 p.16 (score 8.51)"
+      ],
+      "timing": {
+        "retrieval_ms": 4,
+        "generation_ms": 8253,
+        "total_ms": 8257
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q08",
+      "type": "multi",
+      "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+      "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "1/3 key facts; 5/5 citations from expected documents",
+      "answer": "The passages only partly answer this. In 5G, subscribers are not identified by name. Each subscription is managed with a permanent identifier, the Subscription Permanent Identifier (SUPI), which is written into the SIM and stored in the operator's subscriber database [1][2]. The UE also has temporary identities, such as the 5G-Globally Unique Temporary UE Identity (5G-GUTI), which contains the 5G-TMSI, alongside the SUPI and IMEI [3][4]. The passage describing how a new 5G-GUTI is assigned is cut off, so the passages do not explain how reassigning it protects the SUPI [4].\n\nFor the comparison, the passages describe networks \"before 5G\" in general rather than LTE by name. In those networks, paging occasions were tied directly to the permanent UE identity, and each cleartext paging alert carried a permanent or quasi-permanent identity. This left paging open to attacks with serious privacy risks for subscribers [5]. The passages imply that 5G changes this, but they do not say what 5G does instead, such as which identity it uses for paging. They also do not cover how the SUPI is protected when it is sent over the air.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36C, pp. 2-3",
+        "CSWP 36D, p. 4",
+        "CSWP 36D, p. 4",
+        "CSWP 36C, pp. 5-6",
+        "CSWP 36D, p. 5"
+      ],
+      "retrieved": [
+        "CSWP 36C p.2 (score 19.21)",
+        "CSWP 36D p.4 (score 19.08)",
+        "CSWP 36D p.4 (score 17.97)",
+        "CSWP 36C p.5 (score 17.35)",
+        "CSWP 36D p.5 (score 17.04)"
+      ],
+      "timing": {
+        "retrieval_ms": 5,
+        "generation_ms": 9287,
+        "total_ms": 9292
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q09",
+      "type": "multi",
+      "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+      "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D).",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 5/5 citations from expected documents",
+      "answer": "The passages name several identifiers. The **SUPI (Subscription Permanent Identifier)** is the permanent identifier the network uses to manage each subscription, instead of the subscriber's name. It is written into the SIM and stored in the operator's subscriber database [2][3]. The **5G-GUTI (5G-Globally Unique Temporary UE Identity)** is a temporary identity [1][4]. The **IMEI (International Mobile station Equipment Identity)** and the **5G-TMSI** are also listed as subscriber- or UE-related identities [4].\n\n- **SUPI:** It is protected by the **Subscription Concealed Identifier (SUCI)**, which provides important security and privacy protections for subscriber identifiers. Operators get these protections only if they enable SUCI on their networks and SIMs and configure it with a non-null encryption scheme [5].\n- **5G-GUTI:** It is reallocated when certain events occur for a user. This weakens the link between a subscriber and their phone's identifiers, which makes tracking their movements harder and supports disassociability, provided it is implemented and configured correctly [1].\n\nThe passages do not explain how the IMEI or the 5G-TMSI are protected from tracking. They also do not describe how SUCI technically conceals the SUPI.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36C, pp. 2-3",
+        "CSWP 36D, p. 4",
+        "CSWP 36C, p. 4",
+        "CSWP 36C, pp. 5-6",
+        "CSWP 36A, p. 2"
+      ],
+      "retrieved": [
+        "CSWP 36C p.4 (score 17.32)",
+        "CSWP 36C p.2 (score 13.88)",
+        "CSWP 36D p.4 (score 13.83)",
+        "CSWP 36C p.5 (score 13.75)",
+        "CSWP 36A p.2 (score 13.61)"
+      ],
+      "timing": {
+        "retrieval_ms": 4,
+        "generation_ms": 11566,
+        "total_ms": 11570
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q10",
+      "type": "paraphrase",
+      "question": "Is it safe to pair my wireless headphones?",
+      "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'.",
+      "status": "insufficient",
+      "auto_verdict": "incorrect",
+      "notes": "refused an answerable question",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages give no guidance on Bluetooth or on pairing wireless headphones; they cover only NFC, general telework advice, and EAP authentication methods for Wi-Fi networks",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.81 (score 6.78)",
+        "CSI U/OO/166417-21 p.7 (score 6.75)",
+        "SP 800-97 p.82 (score 6.66)",
+        "CSI U/OO/166417-21 p.7 (score 6.57)",
+        "CSI U/OO/166417-21 p.8 (score 6.54)"
+      ],
+      "timing": {
+        "retrieval_ms": 2,
+        "generation_ms": 5547,
+        "total_ms": 5548
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q11",
+      "type": "paraphrase",
+      "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+      "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "1/3 key facts; 1/1 citations from expected documents",
+      "answer": "The passages describe a closely related risk but do not specifically discuss fake cell towers. According to the NIST material on subscriber identifiers, a subscriber's identifier can be sent in the clear over the air from the device to the cell tower. Eavesdroppers can then intercept it and use it to track the subscriber's location, which can reveal patterns of movement. The passage describes this as both a cybersecurity risk to organizations and a privacy risk to individuals [5].\n\nThe passages do not cover how a fake cell tower in particular would capture this identifier, whether it could link the identifier to your real name, or how the Subscription Concealed Identifier (SUCI) protects against this.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-97 p.62 (score 12.91)",
+        "SP 800-187 p.13 (score 12.28)",
+        "CSWP 36E p.8 (score 12.22)",
+        "SP 800-187 p.28 (score 10.97)",
+        "CSWP 36A p.3 (score 10.97)"
+      ],
+      "timing": {
+        "retrieval_ms": 4,
+        "generation_ms": 8232,
+        "total_ms": 8236
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q12",
+      "type": "paraphrase",
+      "question": "Should I check my bank account on the free internet at a coffee shop?",
+      "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/3 citations from expected documents",
+      "answer": "Generally, no. NSA guidance for public Wi-Fi says to avoid accessing personal data such as bank accounts, to avoid online shopping or financial transactions, and not to enter your most sensitive account passwords on sites or applications [1].\n\nIf you must use public Wi-Fi, the same guidance recommends:\n- Using an IPsec VPN and HTTPS browsing [5].\n- Visiting only the websites and accounts you need [5].\n- On a laptop, not setting the public network as trusted [1].\n- Logging out of the network and choosing \"Forget\" for the access point when you're done [5].\n\nAn older, withdrawn NIST guide adds that you should make sure your personal firewall is running and your antivirus and anti-spyware software is up to date when you use networks such as coffee shops [3].",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, pp. 5-6",
+        "SP 800-97, p. 129"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.5 (score 24.18)",
+        "SP 800-97 p.106 (score 16.66)",
+        "SP 800-97 p.129 (score 14.08)",
+        "SP 800-97 p.128 (score 13.76)",
+        "CSI U/OO/166417-21 p.5 (score 9.57)"
+      ],
+      "timing": {
+        "retrieval_ms": 2,
+        "generation_ms": 5279,
+        "total_ms": 5282
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "question": "What security improvements does WPA3 bring over WPA2?",
+      "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages provided do not mention WPA3, so they cannot be used to describe its security improvements over WPA2",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.101 (score 8.71)",
+        "SP 800-153 p.6 (score 7.15)",
+        "CSWP 36E p.3 (score 7.15)",
+        "SP 800-97 p.70 (score 6.96)",
+        "SP 800-121 Rev. 2 p.17 (score 6.75)"
+      ],
+      "timing": {
+        "retrieval_ms": 3,
+        "generation_ms": 4444,
+        "total_ms": 4447
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q14",
+      "type": "unanswerable",
+      "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+      "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages contain no configuration steps for a Cisco Catalyst 9800 controller; they cover only general guest WLAN guidance, such as a policy defining which resources guests may reach and choosing a widely supported EAP method",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "CSWP 36E p.10 (score 10.13)",
+        "SP 800-97 p.106 (score 8.19)",
+        "SP 800-97 p.89 (score 8.09)",
+        "CSWP 36E p.11 (score 7.93)",
+        "SP 800-97 p.6 (score 7.8)"
+      ],
+      "timing": {
+        "retrieval_ms": 5,
+        "generation_ms": 8175,
+        "total_ms": 8180
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q15",
+      "type": "ambiguous",
+      "question": "How does authentication work?",
+      "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 5/5 citations from expected documents",
+      "answer": "Your question could refer to several wireless technologies. The passages cover parts of Bluetooth and Wi-Fi (IEEE 802.11) authentication. They don't give a full step-by-step description of either, and they say nothing about LTE or 5G.\n\n**Bluetooth:** The specification authenticates devices, not users. User authentication must be added by the application developer at the application level [4]. Authentication covers individual links only, not end-to-end, so data is decrypted at intermediate points [4]. With Secure Simple Pairing (SSP), the association model matters. \"Just Works\" provides no man-in-the-middle protection, so devices should verify that an authenticated link key was generated during pairing. The guidance also prefers devices that support Numeric Comparison, Out-of-Band (OOB) or Passkey Entry [1].\n\n**Wi-Fi (802.11):** These passages come from SP 800-97, which has been withdrawn, so they may be out of date. Legacy \"shared key\" authentication is a one-way challenge-response scheme: the response is made by XORing the challenge with a key stream generated from a WEP key, and the guide states that it does not work [5]. For robust security networks, EAP-based authentication lets organizations reuse their existing user authentication databases [2]. They may also use an existing AAA server, for example one configured to accept tokens or certificates but not passwords [3]. The passages do not describe the EAP exchange or key derivation in detail.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-121 Rev. 2, pp. 50-51",
+        "SP 800-121 Rev. 2, p. 56",
+        "SP 800-97, p. 29",
+        "SP 800-97, p. 42",
+        "SP 800-97, p. 89"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.56 (score 5.91)",
+        "SP 800-97 p.42 (score 5.75)",
+        "SP 800-97 p.89 (score 5.01)",
+        "SP 800-121 Rev. 2 p.50 (score 4.98)",
+        "SP 800-97 p.29 (score 4.81)"
+      ],
+      "timing": {
+        "retrieval_ms": 5,
+        "generation_ms": 10562,
+        "total_ms": 10567
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    }
+  ],
+  "hybrid-500-k5": [
+    {
+      "id": "Q01",
+      "type": "direct",
+      "question": "What does SUCI stand for and what problem does it solve?",
+      "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 4/4 citations from expected documents",
+      "answer": "SUCI stands for **Subscription Concealed Identifier**, an optional 5G feature supported since 3GPP Release 15 in 2019 [1]. It addresses the risk that a device could be drawn onto a malicious network and send the subscriber's identifier (the SUPI) in clear text [1]. SUCI solves this by encrypting the SUPI with the home operator's public key, producing a ciphered identity that is always unique, so an attacker cannot link it to the subscriber [1]. On the home network side, the UDM network function's Subscription Identifier De-concealing Function (SIDF) decrypts the SUCI back to the SUPI [4].\n\nSUCI only protects subscriber information when connecting to 5G networks. It gives no protection on earlier generations such as 4G LTE [2]. A 2021 CSRIC report recommends that U.S. operators use SUCI and avoid the null encryption scheme, except when an unknown 5G device is requesting emergency services [5].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3",
+        "CSWP 36A, pp. 7-8",
+        "CSWP 36A, pp. 4-5",
+        "CSWP 36A, p. 4"
+      ],
+      "retrieved": [
+        "CSWP 36A p.3 (score 0.032)",
+        "CSWP 36A p.4 (score 0.0313)",
+        "CSWP 36A p.5 (score 0.03)",
+        "CSWP 36A p.7 (score 0.0296)",
+        "CSWP 36A p.4 (score 0.0295)"
+      ],
+      "timing": {
+        "retrieval_ms": 1256,
+        "generation_ms": 7936,
+        "total_ms": 9192
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q02",
+      "type": "direct",
+      "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+      "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 4/4 citations from expected documents",
+      "answer": "NSA advises connecting only to public Wi-Fi networks that use WPA2 encryption at a minimum [3]. It also recommends connecting only to secure public Wi-Fi, which usually requires a password or other authentication that limits who can connect, and says not to connect to open Wi-Fi hotspots [3].\n\nKeep in mind that a password alone doesn't guarantee protection: a public network that requires a password might not encrypt traffic, and if it does, someone who knows the pre-shared key can decrypt it [2]. For that reason, NSA strongly advises using a personal or corporate-provided VPN when connecting to public Wi-Fi [1]. Where possible, it recommends using a corporate or personal hotspot with strong authentication and encryption instead [4].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, p. 2",
+        "CSI U/OO/166417-21, p. 2",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.2 (score 0.0315)",
+        "CSI U/OO/166417-21 p.2 (score 0.0311)",
+        "CSI U/OO/166417-21 p.5 (score 0.0299)",
+        "CSI U/OO/166417-21 p.2 (score 0.0298)",
+        "SP 800-97 p.21 (score 0.0294)"
+      ],
+      "timing": {
+        "retrieval_ms": 1223,
+        "generation_ms": 6375,
+        "total_ms": 7598
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q03",
+      "type": "direct",
+      "question": "What is bluesnarfing?",
+      "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 5/5 citations from expected documents",
+      "answer": "Bluesnarfing is a Bluetooth-specific attack that lets an attacker gain access to a Bluetooth-enabled device by exploiting a firmware flaw in older devices from around 2003 [1]. The attack forces a connection to the device. That gives access to data stored on it, including the device's international mobile equipment identity (IMEI) [1].\n\nNIST lists it alongside other Bluetooth-specific attacks such as bluejacking and bluebugging [2][3][5]. NSA names it as one of the Bluetooth compromise techniques that pose a cyberthreat in public settings, used to send, collect, or manipulate data and services on a device [4].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 51",
+        "SP 800-121 Rev. 2, p. 51",
+        "SP 800-121 Rev. 2, pp. 51-52",
+        "SP 800-121 Rev. 2, p. 52",
+        "CSI U/OO/166417-21, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.51 (score 0.032)",
+        "SP 800-121 Rev. 2 p.51 (score 0.032)",
+        "SP 800-121 Rev. 2 p.51 (score 0.032)",
+        "CSI U/OO/166417-21 p.3 (score 0.032)",
+        "SP 800-121 Rev. 2 p.52 (score 0.0154)"
+      ],
+      "timing": {
+        "retrieval_ms": 1172,
+        "generation_ms": 5632,
+        "total_ms": 6804
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q04",
+      "type": "direct",
+      "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+      "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "In NIST's 5G hardware-enabled security white paper (CSWP 36B), remote attestation is how 5G servers send their trust values to a RAS. The RAS collects and aggregates the trust measurements from all servers in the 5G environment [2]. Each 5G server sends its platform integrity measurements to the RAS, and the RAS evaluates the server's trust status [4]. More specifically, the paper describes remotely attesting each server's measurements and labels against policies. Those measurements are taken at each boot, and the results are used during 5G workload orchestration to enforce the trust status of the host platform [3].\n\nRemote attestation also displays the trust status of all 5G servers in the NCCoE 5G Lab, and you can select an individual server to see its own trust status [4]. When attestation fails, the paper says forensic analysis of those failures is needed [4]. The paper bases this on the IETF's general remote attestation procedure architecture for networked systems, which it says applies to 5G [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36B, p. 11",
+        "CSWP 36B, pp. 11-12",
+        "CSWP 36B, p. 5"
+      ],
+      "retrieved": [
+        "CSWP 36B p.2 (score 0.0323)",
+        "CSWP 36B p.11 (score 0.0315)",
+        "CSWP 36B p.5 (score 0.0308)",
+        "CSWP 36B p.11 (score 0.0306)",
+        "CSWP 36A p.2 (score 0.029)"
+      ],
+      "timing": {
+        "retrieval_ms": 1246,
+        "generation_ms": 7943,
+        "total_ms": 9189
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q05",
+      "type": "direct",
+      "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+      "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 2/2 citations from expected documents",
+      "answer": "After a handover in LTE, the new session is protected by **KeNB\\***. It is derived from the current KeNB together with other cryptographic parameters and the cell ID of the new eNodeB [3].\n\nNew keys are generated at handover, which partly separates the new session from the previous one. However, a new master session key (KASME) is not generated [2][3]. Key derivation is controlled by the source base station and the MME, and the new eNodeB is not meant to know the keys used in the original eNodeB session [3]. With an X2 handover, fresh keying material can only be provided after the handover, for use in the next handover [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 27",
+        "SP 800-187, p. 27"
+      ],
+      "retrieved": [
+        "SP 800-187 p.27 (score 0.0323)",
+        "SP 800-187 p.27 (score 0.0323)",
+        "SP 800-187 p.27 (score 0.0311)",
+        "SP 800-187 p.18 (score 0.0306)",
+        "SP 800-187 p.13 (score 0.0306)"
+      ],
+      "timing": {
+        "retrieval_ms": 616,
+        "generation_ms": 6278,
+        "total_ms": 6894
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q06",
+      "type": "direct",
+      "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+      "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 4/4 citations from expected documents",
+      "answer": "In IEEE 802.11i, the 4-Way Handshake **verifies that both parties hold a pairwise master key (PMK)**, **synchronizes the installation of temporal keys**, and **confirms the selection of cipher suites** [1]. The station (STA) and access point (AP) exchange four frames and each performs computations to generate and verify the data in them [2]. When the handshake succeeds, the AP and STA are mutually authenticated, and the IEEE 802.1X controlled ports open so data traffic can flow [2]. The handshake is also the basis for key generation and distribution in WPA, which uses a subset of IEEE 802.11i [5].\n\nFor protecting the handshake itself, IEEE 802.11i also allows RC4 encryption with HMAC-MD5. However, RC4 has known vulnerabilities, and neither algorithm is FIPS-validated [4]. All of these passages come from SP 800-97 (2007), which has been withdrawn, so you may want to check current guidance.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 39",
+        "SP 800-97, p. 71",
+        "SP 800-97, p. 100",
+        "SP 800-97, p. 114"
+      ],
+      "retrieved": [
+        "SP 800-97 p.39 (score 0.0315)",
+        "SP 800-97 p.71 (score 0.0307)",
+        "SP 800-97 p.101 (score 0.0296)",
+        "SP 800-97 p.114 (score 0.0293)",
+        "SP 800-97 p.100 (score 0.0291)"
+      ],
+      "timing": {
+        "retrieval_ms": 555,
+        "generation_ms": 7116,
+        "total_ms": 7671
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q07",
+      "type": "multi",
+      "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+      "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA).",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "1/2 key facts; 5/5 citations from expected documents; cites 1 of the 2 documents needed",
+      "answer": "Bluetooth devices face general wireless threats, including denial of service (DoS), eavesdropping, man-in-the-middle (MITM) attacks, message modification and resource misappropriation. They also face attacks that target known weaknesses in Bluetooth implementations and specifications [1]. If a Bluetooth implementation is poorly secured, attackers can gain unauthorized access to sensitive information and unauthorized use of the device or of systems and networks connected to it [3]. The specific attacks described are:\n\n- **Bluesnarfing:** exploits a firmware flaw in older devices (around 2003) to force a connection and reach data stored on the device, including its IMEI [5].\n- **Denial of Service:** can make a device's Bluetooth interface unusable and drain its battery [2].\n- **Fuzzing attacks:** send malformed or non-standard data to a device's Bluetooth radio to see how it reacts. If the device slows down or stops, the protocol stack may have a serious vulnerability [4].\n- **Pairing eavesdropping:** PIN/Legacy Pairing (Bluetooth 2.0 and earlier) and low energy Legacy Pairing are open to eavesdropping [4].\n\nOn protecting your devices in public places, the passages say very little. The only guidance is that DoS attacks are not significant and can usually be avoided by moving out of range, because Bluetooth works only at close distances [2]. The provided documents do not cover other protective steps for public settings.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 6",
+        "SP 800-121 Rev. 2, p. 6",
+        "SP 800-121 Rev. 2, p. 51",
+        "SP 800-121 Rev. 2, p. 52",
+        "SP 800-121 Rev. 2, p. 52"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.6 (score 0.032)",
+        "SP 800-121 Rev. 2 p.52 (score 0.0296)",
+        "SP 800-121 Rev. 2 p.6 (score 0.0294)",
+        "SP 800-121 Rev. 2 p.52 (score 0.0292)",
+        "SP 800-121 Rev. 2 p.51 (score 0.0277)"
+      ],
+      "timing": {
+        "retrieval_ms": 755,
+        "generation_ms": 8562,
+        "total_ms": 9317
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q08",
+      "type": "multi",
+      "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+      "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "1/3 key facts; 5/5 citations from expected documents",
+      "answer": "In 5G, each subscription is managed by a permanent identifier called the Subscription Permanent Identifier (SUPI), which is written into the SIM provided by the subscriber's network operator [1]. To protect this permanent identity, 5G standards require a temporary identity (ID) instead of the SUPI for paging, and they explicitly define when that temporary ID must be reallocated (refreshed) [5]. This removes the SUPI relationship from the paging protocol [2]. The temporary identity is the 5G-GUTI. It is assigned and maintained by the serving AMF and includes the home network's Mobile Country Code (MCC) and Mobile Network Code (MNC), the AMF Identifier, and the 5G-TMSI [3]. Reallocating the 5G-GUTI after certain events weakens the link between a subscriber and their phone's identifiers. This makes tracking the subscriber's movements harder and supports disassociability, provided it is implemented and configured correctly [4]. Operators and organizations using 5G are encouraged to verify that paging happens as the standards describe [5].\n\nThe passages do not mention LTE by name. They only contrast 5G with \"previous generations\" of cellular systems, which often used permanent or quasi-permanent IDs for paging and were therefore exposed to cybersecurity and privacy risks [2][5]. A specific comparison with LTE's mechanisms is not covered in these documents.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 4",
+        "CSWP 36D, p. 2",
+        "CSWP 36D, pp. 2-3",
+        "CSWP 36C, p. 5",
+        "CSWP 36C, p. 4"
+      ],
+      "retrieved": [
+        "CSWP 36D p.4 (score 0.0293)",
+        "CSWP 36D p.2 (score 0.0286)",
+        "CSWP 36C p.5 (score 0.0274)",
+        "CSWP 36C p.4 (score 0.0256)",
+        "CSWP 36D p.2 (score 0.0164)"
+      ],
+      "timing": {
+        "retrieval_ms": 719,
+        "generation_ms": 8239,
+        "total_ms": 8958
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q09",
+      "type": "multi",
+      "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+      "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D).",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 5/5 citations from expected documents",
+      "answer": "A 5G network manages each subscription with a permanent identifier, the **Subscription Permanent Identifier (SUPI)**, which is written into the SIM supplied by the operator [1]. To keep the SUPI from being used to identify and locate users, 5G standards require that paging use a temporary identity instead of the SUPI and specify when that temporary identity must be refreshed [4]. This matters because paging occasions are calculated from the subscriber/UE identity [1]. A second identifier, the **Subscription Concealed Identifier (SUCI)**, offers protection for subscriber identifiers [2]. However, 5G standards define SUCI protection as optional for operators, so it only applies where it has been enabled [2]. The passages do not explain how SUCI conceals the SUPI or how it is generated.\n\nThe temporary identity is the **5G-GUTI**. The serving AMF assigns and maintains it, and that AMF may be in a visited network when roaming [5]. It is made up of the home network's Mobile Country Code and Mobile Network Code, the AMF Identifier, and the **5G-Temporary Mobile Subscriber Identity (5G-TMSI)** [5]. The network reallocates the 5G-GUTI when certain user-related events occur. This weakens the link between a subscriber and their phone's identifiers, making movements harder to track and supporting disassociability, provided it is implemented and configured correctly [3]. Operators and organizations are encouraged to check that paging actually follows the standards [4].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 4",
+        "CSWP 36D, p. 2",
+        "CSWP 36A, pp. 1-2",
+        "CSWP 36C, p. 5",
+        "CSWP 36C, p. 4"
+      ],
+      "retrieved": [
+        "CSWP 36D p.4 (score 0.0315)",
+        "CSWP 36A p.1 (score 0.0313)",
+        "CSWP 36C p.4 (score 0.0311)",
+        "CSWP 36D p.2 (score 0.0297)",
+        "CSWP 36C p.5 (score 0.0294)"
+      ],
+      "timing": {
+        "retrieval_ms": 331,
+        "generation_ms": 11722,
+        "total_ms": 12054
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q10",
+      "type": "paraphrase",
+      "question": "Is it safe to pair my wireless headphones?",
+      "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 3/4 citations from expected documents",
+      "answer": "Assuming your headphones use **Bluetooth**, the passages don't give a yes-or-no answer for any particular device. They do describe what makes pairing safer or riskier. NIST advises pairing as infrequently as possible, ideally in a physically secure area where attackers cannot watch passkey entry or eavesdrop on pairing communications [3]. Older PIN-based pairing does not protect against offline attacks, where someone records the pairing frames and guesses PINs until they find the link key [2]. That matters because authentication security rests entirely on keeping the link key secret [2]. Starting with Simple Secure Pairing in Bluetooth 2.1, PINs are no longer used for pairing [3]. For low energy connections, NIST considers the mode that uses authenticated pairing (AES-CMAC and P-256 elliptic curve) and AES-CCM encryption the most secure, and strongly recommends it for all low energy connections in Bluetooth 4.2 [1].\n\nIf your device connects to the headphones and a Wi-Fi network at the same time, the security of that setup depends on the security of every network involved. If one network's risk can't be reduced to an acceptable level, an organization may need to prohibit such dual connections [4]. The passages don't say which pairing method or Bluetooth version a given pair of headphones uses, so they can't tell you whether your specific headphones are safe to pair.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, pp. 7-8",
+        "SP 800-121 Rev. 2, pp. 30-31",
+        "SP 800-121 Rev. 2, pp. 11-12",
+        "SP 800-153, p. 12"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.11 (score 0.0303)",
+        "SP 800-121 Rev. 2 p.30 (score 0.0286)",
+        "SP 800-121 Rev. 2 p.7 (score 0.0278)",
+        "SP 800-153 p.12 (score 0.0164)",
+        "SP 800-97 p.81 (score 0.0164)"
+      ],
+      "timing": {
+        "retrieval_ms": 809,
+        "generation_ms": 11100,
+        "total_ms": 11909
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q11",
+      "type": "paraphrase",
+      "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+      "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "**Yes, to some degree.** The passages describe two related risks for cellular networks.\n\n- **Fake cell towers (LTE):** A rogue base station can intercept traffic in an area. Because people keep their phones close, its operator may be able to tell whether a specific person is or is not at a particular location, such as where they live [2].\n- **Unprotected phone identifiers:** If a phone sends its subscriber identifier unencrypted over the air to the cell tower, eavesdroppers can capture it and use it to track the subscriber's location and correlate their movements [1]. That NIST publication is about protecting these identifiers with the 5G Subscription Concealed Identifier (SUCI) [1], but the passage provided doesn't explain how SUCI works or how well it protects you.\n\nThe passages don't say whether a fake tower can learn your name or other personal details beyond your identifier and location. Mobile apps can detect rogue base stations, for example by comparing the information towers broadcast against known-good values, though they often need specific chipsets on older phone models [5].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 33",
+        "CSWP 36A, p. 3",
+        "SP 800-187, p. 40"
+      ],
+      "retrieved": [
+        "CSWP 36A p.3 (score 0.0315)",
+        "SP 800-187 p.33 (score 0.0164)",
+        "SP 800-97 p.62 (score 0.0164)",
+        "SP 800-187 p.13 (score 0.0161)",
+        "SP 800-187 p.40 (score 0.0159)"
+      ],
+      "timing": {
+        "retrieval_ms": 260,
+        "generation_ms": 11018,
+        "total_ms": 11279
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q12",
+      "type": "paraphrase",
+      "question": "Should I check my bank account on the free internet at a coffee shop?",
+      "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "It's best not to. NSA guidance on public Wi-Fi says to avoid accessing personal data such as bank accounts, and to avoid financial transactions and online shopping, while on these networks [1]. It also says not to enter your most sensitive account passwords on sites or apps there [1]. The reason is that public Wi-Fi hotspots are often not configured securely, even if they are convenient [3].\n\nIf you do have to use the coffee shop's Wi-Fi, the same guidance recommends using an IPsec VPN, browsing only over HTTPS, and visiting only the websites and accounts you actually need [4]. When you're done, log out of the network and \"Forget\" the access point [4]. On a laptop, don't set the public network as a trusted network, and don't browse with the device's administrator account [1][4].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, p. 1",
+        "CSI U/OO/166417-21, pp. 5-6"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.5 (score 0.0328)",
+        "SP 800-97 p.129 (score 0.0313)",
+        "CSI U/OO/166417-21 p.1 (score 0.0306)",
+        "CSI U/OO/166417-21 p.5 (score 0.0279)",
+        "CSI U/OO/166417-21 p.1 (score 0.0161)"
+      ],
+      "timing": {
+        "retrieval_ms": 260,
+        "generation_ms": 6328,
+        "total_ms": 6588
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "question": "What security improvements does WPA3 bring over WPA2?",
+      "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages cover only WPA and WPA2 in the withdrawn 2007 guide SP 800-97 and do not mention WPA3, so they cannot support a comparison of WPA3 with WPA2",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.100 (score 0.0296)",
+        "SP 800-97 p.102 (score 0.0293)",
+        "SP 800-97 p.100 (score 0.0291)",
+        "SP 800-97 p.133 (score 0.0277)",
+        "SP 800-97 p.14 (score 0.0274)"
+      ],
+      "timing": {
+        "retrieval_ms": 347,
+        "generation_ms": 5863,
+        "total_ms": 6210
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q14",
+      "type": "unanswerable",
+      "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+      "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages have no Cisco Catalyst 9800 configuration steps, only general guest WLAN guidance: keep guest and internal WLANs logically separated [3], and define in policy which resources guests may reach (from the withdrawn SP 800-97) [1]",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.106 (score 0.0323)",
+        "SP 800-97 p.6 (score 0.0311)",
+        "SP 800-153 p.6 (score 0.0288)",
+        "CSWP 36E p.10 (score 0.0164)",
+        "SP 800-187 p.45 (score 0.0159)"
+      ],
+      "timing": {
+        "retrieval_ms": 530,
+        "generation_ms": 10033,
+        "total_ms": 10564
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q15",
+      "type": "ambiguous",
+      "question": "How does authentication work?",
+      "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 5/5 citations from expected documents",
+      "answer": "The question could refer to several wireless technologies; the passages cover **Wi-Fi (IEEE 802.11i)** and **Bluetooth**, but not LTE or 5G.\n\n**Wi-Fi (IEEE 802.11i):** Authentication involves three roles. The *supplicant*, such as a station (STA), is the entity being authenticated. The *authenticator*, such as an access point (AP), facilitates the authentication attempt. The *authentication server (AS)* provides the authentication service to the authenticator [1]. Authentication uses EAP methods, which can rely on passwords, certificates, smart cards, or tokens. These can also be combined, for example a certificate followed by a password, which lets EAP fit nearly any environment a WLAN connects to [5]. This approach allows organizations to reuse the user authentication databases they already have [4]. Some methods pair TLS authentication with one or more additional EAP methods [3]. Note that the source for this guidance, SP 800-97, has been withdrawn.\n\n**Bluetooth:** For devices using Secure Simple Pairing (SSP), the device must verify that an authenticated link key was generated during pairing [2]. The \"Just Works\" association model provides no man-in-the-middle protection and should be avoided. Devices that only support Just Works should not be procured if comparable devices supporting Numeric Comparison, Out-of-Band (OOB), or Passkey Entry are available [2].\n\nThe passages do not describe the step-by-step message exchange for either technology, and they do not cover LTE or 5G authentication.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 37",
+        "SP 800-97, p. 13",
+        "SP 800-97, p. 42",
+        "SP 800-97, p. 83",
+        "SP 800-121 Rev. 2, p. 56"
+      ],
+      "retrieved": [
+        "SP 800-97 p.37 (score 0.0164)",
+        "SP 800-121 Rev. 2 p.56 (score 0.0164)",
+        "SP 800-97 p.83 (score 0.0161)",
+        "SP 800-97 p.42 (score 0.0161)",
+        "SP 800-97 p.13 (score 0.0159)"
+      ],
+      "timing": {
+        "retrieval_ms": 225,
+        "generation_ms": 10819,
+        "total_ms": 11043
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    }
+  ],
+  "vector-1500-k5": [
+    {
+      "id": "Q01",
+      "type": "direct",
+      "question": "What does SUCI stand for and what problem does it solve?",
+      "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 4/4 citations from expected documents",
+      "answer": "SUCI stands for Subscription Concealed Identifier. It is a ciphered version of the subscriber's identity, created by encrypting the SUPI with the home operator's public key. The mobile device or SIM calculates it using elliptic curve cryptography [3], based on the Elliptic Curve Integrated Encryption Scheme (ECIES) [4]. It became an optional 5G feature with 3GPP release 15 in 2019 [3].\n\nSUCI addresses the exposure of subscriber identifiers over the air. In 4G systems this problem is known as IMSI catching. A rogue base station broadcasting at higher power than a legitimate one can trick a handset into connecting to it, and the handset may then send its SUPI in clear text [3]. With SUCI, the device sends the concealed identifier over the air instead of the SUPI. Each SUCI is always unique, so an attacker can't link it to the subscriber. Only the Unified Data Management (UDM) function of the subscriber's operator, which holds the matching private key, can decrypt it [3]. Without SUCI, the SUPI is sent in the clear [3].\n\nSUCI has limits. It protects subscriber information only on 5G networks, not on earlier generations such as 4G LTE [1]. Operators must also turn it on, because enabling it is optional for them [2]. CSRIC recommends that U.S. operators use SUCI and avoid the null encryption scheme except for emergency calls from devices the operator does not know [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3",
+        "CSWP 36A, pp. 5-6",
+        "CSWP 36A, pp. 4-5",
+        "CSWP 36A, pp. 3-4"
+      ],
+      "retrieved": [
+        "CSWP 36A p.4 (score 0.425)",
+        "CSWP 36A p.3 (score 0.417)",
+        "CSWP 36A p.3 (score 0.416)",
+        "CSWP 36A p.5 (score 0.412)",
+        "CSWP 36A p.6 (score 0.394)"
+      ],
+      "timing": {
+        "retrieval_ms": 576,
+        "generation_ms": 10694,
+        "total_ms": 11270
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q02",
+      "type": "direct",
+      "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+      "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 2/2 citations from expected documents",
+      "answer": "NSA says to connect only to public networks that use **WPA2 encryption at a minimum** [2]. You can usually check a network's encryption type in your device settings under Network Properties, or Network Details on macOS [2].\n\nNSA also notes that WPA2 alone is not enough protection. A password-protected public network might not encrypt traffic at all, and if it does, anyone who knows the pre-shared key can decrypt it [4]. Attackers can also sometimes force a network to use insecure protocols or obsolete encryption, or set up a fake \"evil twin\" access point [4]. For these reasons NSA strongly advises using a personal or corporate VPN, preferably IPsec, and browsing only HTTPS sites when on public Wi-Fi [2][4]. It also says not to connect to open hotspots at all [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, pp. 5-6",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "SP 800-97 p.21 (score 0.632)",
+        "CSI U/OO/166417-21 p.5 (score 0.568)",
+        "SP 800-97 p.98 (score 0.568)",
+        "CSI U/OO/166417-21 p.2 (score 0.551)",
+        "CSI U/OO/166417-21 p.7 (score 0.549)"
+      ],
+      "timing": {
+        "retrieval_ms": 592,
+        "generation_ms": 8520,
+        "total_ms": 9112
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q03",
+      "type": "direct",
+      "question": "What is bluesnarfing?",
+      "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI.",
+      "status": "insufficient",
+      "auto_verdict": "incorrect",
+      "notes": "refused an answerable question",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages mention bluesnarfing only as a footnote web link and do not define the attack, though they do describe the related Bluetooth attacks bluejacking, bluebugging and Car Whisperer [1]",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.51 (score 0.383)",
+        "SP 800-121 Rev. 2 p.66 (score 0.374)",
+        "SP 800-121 Rev. 2 p.66 (score 0.34)",
+        "SP 800-121 Rev. 2 p.23 (score 0.337)",
+        "SP 800-121 Rev. 2 p.35 (score 0.331)"
+      ],
+      "timing": {
+        "retrieval_ms": 575,
+        "generation_ms": 6551,
+        "total_ms": 7127
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q04",
+      "type": "direct",
+      "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+      "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "In NIST CSWP 36B, RAS stands for Remote Attestation Server rather than \"service.\" It collects and maintains platform integrity measurements across the many physical servers in a 5G system. Each server sends its latest boot-time measurements to the RAS, which keeps them up to date along with a list of allowed measurements [3]. When a 5G server boots and sends its trust measurements, the RAS compares them to the allowed list. If they match, the server can be marked as trusted; if not, it can be marked as not trusted [1][3]. A mismatch does not always mean tampering. For example, a legitimate firmware update may not yet be in the trusted values, so forensic analysis is needed to determine the real attestation status [1]. Operators can use these allowed lists of trusted values to create trusted sets of servers for running specific CNFs [1].\n\nThe RAS also tracks and records asset tags, which are key-value attributes such as geographic location, company name, division or department. These tags can be provisioned to a 5G server through a trust agent. The RAS later retrieves the asset tag hash, stored in a hardware security module such as the TPM, as part of the TPM report and includes it in the platform trust report evaluation [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36B, pp. 4-5",
+        "CSWP 36B, p. 11"
+      ],
+      "retrieved": [
+        "CSWP 36B p.11 (score 0.62)",
+        "CSWP 36B p.1 (score 0.538)",
+        "CSWP 36B p.4 (score 0.533)",
+        "CSWP 36 p.4 (score 0.53)",
+        "CSWP 36A p.2 (score 0.515)"
+      ],
+      "timing": {
+        "retrieval_ms": 544,
+        "generation_ms": 8870,
+        "total_ms": 9414
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q05",
+      "type": "direct",
+      "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+      "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 2/2 citations from expected documents",
+      "answer": "In LTE, the new session after a handover is protected by **KeNB\\***. It is derived from the current KeNB, together with other cryptographic parameters and the cell ID of the new eNodeB [1][2]. New keys are generated at handover, which partly separates the new session from the previous one. However, a new master session key (KASME) is not generated [1][2]. The source base station and the MME control this key derivation, and the new eNodeB is not meant to know the keys used in the original eNodeB's session [1].\n\nThe type of handover affects how fresh the keying material is. In an S1 handover, the MME knows about the handover in advance and can refresh the cryptographic parameters that protect the air interface before the connection is severed [2]. In an X2 handover, the switch happens only between eNodeBs, so fresh keying material can be supplied only after the handover, for use in the next one [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, pp. 27-28",
+        "SP 800-187, p. 27"
+      ],
+      "retrieved": [
+        "SP 800-187 p.27 (score 0.639)",
+        "SP 800-187 p.27 (score 0.57)",
+        "SP 800-187 p.35 (score 0.546)",
+        "SP 800-187 p.37 (score 0.517)",
+        "SP 800-187 p.18 (score 0.515)"
+      ],
+      "timing": {
+        "retrieval_ms": 148,
+        "generation_ms": 6404,
+        "total_ms": 6552
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q06",
+      "type": "direct",
+      "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+      "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 5/5 citations from expected documents",
+      "answer": "The 4-Way Handshake is the IEEE 802.11i key management scheme that establishes a Robust Security Network Association (RSNA), the security relationship between communicating 802.11 entities [2][3]. Its purposes are to:\n\n- **Confirm a shared PMK.** It validates that both parties possess the same pairwise master key [2][3].\n- **Synchronize temporal keys.** It coordinates the installation of the temporal keys that protect data traffic [2][3].\n- **Confirm cipher suites.** It confirms the selection and configuration of the data confidentiality and integrity protocols [2][3]. Through it, the STA and AP establish a security policy covering these protocols and a key distribution approach [5].\n- **Authenticate both sides.** When it completes successfully, the AP and STA are mutually authenticated, and the IEEE 802.1X controlled ports open so data traffic can flow [1].\n\nThe handshake also protects itself. Frames 2, 3 and 4 carry a message integrity code, and any change to the unprotected Frame 1 can still be detected by the later checks [1]. If the handshake times out or the RSNIE check fails, the connection is terminated [4]. NIST requires AES Key Wrap with HMAC-SHA-1-128 for this handshake rather than RC4 with HMAC-MD5, and selecting CCMP as the cipher suite ensures this [5].\n\nAll of these passages come from SP 800-97 (2007), which is marked as withdrawn, so you may want to check them against current guidance.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 39",
+        "SP 800-97, p. 33",
+        "SP 800-97, p. 151",
+        "SP 800-97, pp. 71-73",
+        "SP 800-97, pp. 74-75"
+      ],
+      "retrieved": [
+        "SP 800-97 p.71 (score 0.552)",
+        "SP 800-97 p.39 (score 0.548)",
+        "SP 800-97 p.33 (score 0.512)",
+        "SP 800-97 p.74 (score 0.508)",
+        "SP 800-97 p.151 (score 0.504)"
+      ],
+      "timing": {
+        "retrieval_ms": 113,
+        "generation_ms": 7845,
+        "total_ms": 7958
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q07",
+      "type": "multi",
+      "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+      "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA).",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "0/2 key facts; 4/4 citations from expected documents",
+      "answer": "The passages do not name or describe specific Bluetooth attacks. SP 800-121 says its Table 4-1 lists known Bluetooth vulnerabilities and that one significant vulnerability related to Bluetooth 4.0 had been found [5], but that table is not in the retrieved text. The only threat the passages describe is an attacker using a lost or stolen device to reach your other paired devices [2]. Unknown or suspicious devices may also send you messages, files or images [2].\n\nTo protect your devices in public, the passages recommend these steps:\n- Turn Bluetooth off when you are not using it [4].\n- When Bluetooth is on, don't leave the device in discovery mode unless you need it [4].\n- Don't accept pairing attempts you didn't start [4], and don't accept messages, files or images from unknown or suspicious devices [2].\n- Check regularly which devices are connected [4].\n- Don't send passwords or sensitive data over Bluetooth [4].\n- Use an allowlist or denylist to control which apps can use Bluetooth [4].\n- Change default settings, for example to a device name that doesn't reveal the platform [3].\n- Use random, long, private PINs and avoid weak ones like all zeroes [3].\n- Install tested patches and firmware updates [2] and antivirus software where supported [2].\n- If a device is lost or stolen, remove it right away from the paired lists of all your other devices [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 48",
+        "SP 800-121 Rev. 2, p. 59",
+        "CSI U/OO/166417-21, pp. 6-7",
+        "SP 800-121 Rev. 2, p. 55"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.53 (score 0.698)",
+        "SP 800-121 Rev. 2 p.59 (score 0.685)",
+        "SP 800-121 Rev. 2 p.55 (score 0.684)",
+        "CSI U/OO/166417-21 p.6 (score 0.68)",
+        "SP 800-121 Rev. 2 p.48 (score 0.66)"
+      ],
+      "timing": {
+        "retrieval_ms": 113,
+        "generation_ms": 9445,
+        "total_ms": 9558
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q08",
+      "type": "multi",
+      "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+      "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 4/4 citations from expected documents",
+      "answer": "Based on the passages, 5G protects the permanent identity (the SUPI) in two main ways that LTE did not: it keeps the SUPI out of paging, and it strictly requires temporary identities to be refreshed. Note that the passages speak of \"previous generations\" or \"3G and 4G\" rather than LTE by name.\n\n**Paging**\n- In 3G and 4G, the paging occasion (PO) was derived from the subscriber's permanent identifier (IMSI) using a formula [3].\n- An attacker listening to specific POs could therefore infer that a particular group of IMSIs/UEs was in the area. Paging weaknesses could also let an attacker locate a victim based on the permanent identifier [3].\n- 5G removes the link between the SUPI and the paging protocol, so only temporary IDs are used to page the UE. This is called \"no SUPI-based paging\" [2].\n\n**Temporary-ID reallocation**\n- Earlier systems also used temporary IDs to avoid tracking. However, there were no uniform rules for refreshing them, so in some networks they stayed quasi-permanent [1].\n- 5G explicitly defines when the temporary ID (5G-GUTI) must be reallocated [5]. It is required after paging, initial registration and mobility registration updates [1][2].\n- Networks can optionally also assign a new 5G-GUTI after each service request and periodic registration update [1].\n- The full permanent ID (SUPI/SUCI) is needed only when the network cannot recognize the UE from its old 5G-GUTI, which triggers a full authentication [1].\n- If a UE roams back from 5G to an older generation, these protections may not be available [2].\n\nThe passages mention the Subscription Concealed Identifier (SUCI) but do not explain how it conceals the SUPI over the air. They also do not describe the full list of LTE paging weaknesses (only the first of three is included).",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 4",
+        "CSWP 36D, pp. 2-3",
+        "CSWP 36C, pp. 6-7",
+        "CSWP 36C, pp. 1-2"
+      ],
+      "retrieved": [
+        "CSWP 36C p.6 (score 0.665)",
+        "CSWP 36D p.2 (score 0.658)",
+        "CSWP 36D p.4 (score 0.651)",
+        "CSWP 36C p.2 (score 0.65)",
+        "CSWP 36C p.1 (score 0.641)"
+      ],
+      "timing": {
+        "retrieval_ms": 109,
+        "generation_ms": 12162,
+        "total_ms": 12271
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q09",
+      "type": "multi",
+      "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+      "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D).",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 5/5 citations from expected documents",
+      "answer": "The passages name three subscriber identifiers in 5G: the **Subscription Permanent Identifier (SUPI)**, the **Subscription Concealed Identifier (SUCI)**, and the temporary **5G Globally Unique Temporary UE Identity (5G-GUTI)** [1][3][5].\n\n- **SUPI (permanent identifier):** It is protected in two ways. First, SUCI protection guards subscriber identifiers. 5G standards define SUCI as optional, so operators must enable it on their networks and subscriber SIMs and configure it with a non-null encryption cipher scheme [2]. Second, 5G removes the SUPI from the paging protocol and uses only temporary IDs to page user equipment (\"no SUPI-based paging\"). Earlier generations often paged with permanent or quasi-permanent IDs, which created cybersecurity and privacy risks [4].\n- **5G-GUTI (temporary identifier):** An attacker could passively collect GUTIs to confirm a subscriber's presence in an area, reveal past movements, and track future ones [5]. Starting with 3GPP Release 15 (2019), 5G networks must reallocate 5G-GUTIs often, triggered by certain events tied to a specific user, including paging [4][5]. This weakens the link between a subscriber and their phone's identifiers and makes tracking harder [5]. Operators should verify that their networks actually refresh temporary identities as the standards describe [1].\n\nTwo limits apply. If a device roams back from 5G to an earlier-generation system, these protections may not be available [4]. Also, the passages do not explain how SUCI conceals the SUPI technically, and they do not list all the events that trigger GUTI reallocation.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36C, p. 2",
+        "CSWP 36A, p. 2",
+        "CSWP 36C, pp. 3-4",
+        "CSWP 36A, pp. 1-2",
+        "CSWP 36D, pp. 2-3"
+      ],
+      "retrieved": [
+        "CSWP 36C p.2 (score 0.725)",
+        "CSWP 36A p.1 (score 0.688)",
+        "CSWP 36A p.2 (score 0.677)",
+        "CSWP 36D p.2 (score 0.653)",
+        "CSWP 36C p.3 (score 0.651)"
+      ],
+      "timing": {
+        "retrieval_ms": 97,
+        "generation_ms": 11487,
+        "total_ms": 11584
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q10",
+      "type": "paraphrase",
+      "question": "Is it safe to pair my wireless headphones?",
+      "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 4/5 citations from expected documents",
+      "answer": "The passages don't give a yes-or-no answer, but they describe how to pair wireless headphones safely, assuming they use Bluetooth. If your headphones use another wireless technology, the documents don't cover it.\n\n**How to pair more safely**\n- Pair as rarely as you can [1].\n- Ideally pair in a \"secure area,\" meaning a non-public indoor space away from windows with physical access controls, so attackers can't watch you enter a passkey or intercept the pairing messages [1][4].\n- Only respond to a PIN request if you started the pairing and are sure the request comes from one of your own devices [1].\n- Headsets often can't switch Bluetooth off on their own, so turn the whole device off when you're not using it [1].\n- Check whether your workplace has a policy on using a phone with Bluetooth earbuds while it's connected to the Wi-Fi network. Some organizations prohibit this kind of dual connection if one of the networks is too risky [2].\n\n**Why the Bluetooth version matters**\nOlder Bluetooth versions have known weaknesses:\n- Versions 1.0 and 1.1 could use static \"unit keys\" that are reused for every pairing. This can let an attacker eavesdrop on or impersonate the device [3].\n- Security Mode 1 never turns on security mechanisms and is considered inherently insecure [3].\n- Short PINs can be easily guessed [3]. An attacker who records the pairing exchange can try to guess the PIN and recover the link key offline [5].\n\nStarting with Bluetooth 2.1, PINs are no longer used for pairing [4], so newer headphones avoid that particular weakness.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 58",
+        "SP 800-121 Rev. 2, pp. 7-9",
+        "SP 800-153, p. 12",
+        "SP 800-121 Rev. 2, p. 48",
+        "SP 800-121 Rev. 2, pp. 30-31"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.58 (score 0.422)",
+        "SP 800-153 p.12 (score 0.39)",
+        "SP 800-121 Rev. 2 p.48 (score 0.386)",
+        "SP 800-121 Rev. 2 p.7 (score 0.378)",
+        "SP 800-121 Rev. 2 p.30 (score 0.371)"
+      ],
+      "timing": {
+        "retrieval_ms": 128,
+        "generation_ms": 10890,
+        "total_ms": 11019
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q11",
+      "type": "paraphrase",
+      "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+      "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 4/4 citations from expected documents",
+      "answer": "Yes, according to these publications, a fake cell tower (\"rogue base station\") can pose both risks. Phones connect to whichever base station broadcasts as their preferred carrier at the highest power, so a nearby rogue station transmitting at high power may get your phone to connect to it [4][3]. Rogue stations also exploit phones' backward compatibility to push them onto older networks such as 2G GSM [4][1]. GSM lacks mutual authentication and strong cryptography, and does not require the air interface to be encrypted [4]. The unique identifiers for your SIM (IMSI) and handset (IMEI) can indicate who owns a phone and where it is [1]. Location data travels over the air when the phone attaches and authenticates [1]. As a result, an attacker could tell whether a specific person is or isn't at a given location [1]. In 5G, the equivalent identifier (SUPI) would also be sent in the clear without additional protections, letting eavesdroppers track a subscriber's movements, a risk known in 4G as \"IMSI catching\" [3].\n\nRogue base stations can be detected with mobile apps or commercial products that compare broadcast information against known-good values or flag unfamiliar base stations. These tools have limitations and may give false positives [2]. One passage is titled \"Protecting Subscriber Identifiers with Subscription Concealed Identifier (SUCI)\" [3]. However, the passages don't explain how SUCI or other 5G protections work, or how well they prevent this tracking, so I can't say how much protection a modern phone gives you.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, pp. 32-33",
+        "CSWP 36A, p. 3",
+        "SP 800-187, pp. 32-33",
+        "SP 800-187, p. 40"
+      ],
+      "retrieved": [
+        "SP 800-187 p.32 (score 0.518)",
+        "SP 800-187 p.40 (score 0.515)",
+        "CSWP 36A p.3 (score 0.458)",
+        "SP 800-187 p.32 (score 0.443)",
+        "CSWP 36D p.10 (score 0.439)"
+      ],
+      "timing": {
+        "retrieval_ms": 627,
+        "generation_ms": 13060,
+        "total_ms": 13687
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q12",
+      "type": "paraphrase",
+      "question": "Should I check my bank account on the free internet at a coffee shop?",
+      "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "**No. NSA guidance advises against it.** On public Wi-Fi, you should avoid accessing personal data such as bank accounts and avoid financial transactions [2]. You should also avoid public Wi-Fi when possible and use a corporate or personal hotspot with strong authentication and encryption instead [3]. If the coffee shop's network is open, meaning no password, NSA says not to connect to it at all [2]. Data sent over open public Wi-Fi is vulnerable to theft or manipulation, and a password-protected network still might not encrypt your traffic [3][4]. Attackers who know the shared key can decrypt traffic, force the network to use weaker protocols, or set up a fake \"evil twin\" access point that sees all your data, including login credentials [4].\n\n**If you must connect anyway,** use only networks with at least WPA2 encryption [2]. NSA strongly advises using a personal or corporate VPN to encrypt your traffic, and you should only visit sites that use HTTPS (a URL starting with \"https://\" or a lock symbol) [4]. When you're done, log out and \"forget\" the network [2]. Even with these precautions, the guidance still says to avoid banking and other sensitive accounts on public Wi-Fi [2].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, pp. 5-6",
+        "CSI U/OO/166417-21, pp. 1-2",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.1 (score 0.332)",
+        "CSI U/OO/166417-21 p.5 (score 0.319)",
+        "CSI U/OO/166417-21 p.1 (score 0.258)",
+        "CSI U/OO/166417-21 p.2 (score 0.232)",
+        "SP 800-97 p.84 (score 0.228)"
+      ],
+      "timing": {
+        "retrieval_ms": 282,
+        "generation_ms": 8350,
+        "total_ms": 8633
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "question": "What security improvements does WPA3 bring over WPA2?",
+      "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages discuss only WPA and WPA2, drawn from the withdrawn 2007 publication SP 800-97, and do not mention WPA3 or how it compares with WPA2",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.100 (score 0.655)",
+        "SP 800-97 p.99 (score 0.63)",
+        "SP 800-97 p.21 (score 0.622)",
+        "SP 800-97 p.99 (score 0.619)",
+        "SP 800-97 p.98 (score 0.61)"
+      ],
+      "timing": {
+        "retrieval_ms": 180,
+        "generation_ms": 5581,
+        "total_ms": 5761
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q14",
+      "type": "unanswerable",
+      "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+      "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages contain no Cisco Catalyst 9800 configuration steps or vendor-specific instructions for setting up a guest wireless network.\n\nThey do offer some general guest-network guidance from NIST SP 800-97, which has been withdrawn as technologically outdated [2]:\n\n- **Authentication:** PEAP gives the best support for guest users because it does not require a client certificate. However, the root certificate still has to be deployed on the client [3].\n- **Traffic separation:** Dedicated VLANs separate wireless traffic from other network communications. Different VLANs can be defined to apply different security policies [1].\n- **Federal networks:** A wireless network that is not connected to the agency's internal network or the Internet may operate without the FIPS 140-2 protections otherwise required [5]",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.110 (score 0.362)",
+        "SP 800-97 p.1 (score 0.35)",
+        "SP 800-97 p.89 (score 0.336)",
+        "SP 800-97 p.11 (score 0.323)",
+        "SP 800-97 p.98 (score 0.321)"
+      ],
+      "timing": {
+        "retrieval_ms": 191,
+        "generation_ms": 10383,
+        "total_ms": 10573
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q15",
+      "type": "ambiguous",
+      "question": "How does authentication work?",
+      "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 5/5 citations from expected documents",
+      "answer": "Your question could refer to Wi-Fi, Bluetooth, LTE or 5G, but the passages only cover **Wi-Fi (IEEE 802.11i robust security networks)**, so other technologies are not addressed here. The source, SP 800-97, is also marked as a withdrawn publication, so check it against current guidance.\n\nIn 802.11i, authentication uses the IEEE 802.1X framework, which has three parts: a supplicant (the client station), an authenticator (the access point), and an authentication server (AS) [1][2]. The AS is typically a AAA server using RADIUS or Diameter [1]. The authenticator simply relays authentication traffic between the client and the AS [2]. Using port-based access control, EAP authentication traffic passes through the AP's uncontrolled port, while all other data is blocked on the controlled port until authentication succeeds [2][3]. The actual authentication is carried out with EAP, which supports static passwords, one-time passwords or tokens, and certificates [2][4]. Only one EAP method is used per conversation, though one method can be nested inside another (tunneling) [4].\n\nThe station and AS authenticate each other, which lets the station confirm it is on a legitimate network rather than a rogue one [5]. This need not be symmetric: for example, the server might use a certificate while the user uses a biometric [4]. One passage notes that the basic supplicant/authenticator model on its own is unilateral, meaning the supplicant authenticates to the network [1]. After authentication succeeds, a AAA key is installed in the station and the AS. It serves as a root key for the 4-Way Handshake and Group Key Handshake, which generate the keys that protect traffic between the station and the AP [3].",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 34",
+        "SP 800-97, pp. 65-66",
+        "SP 800-97, p. 151",
+        "SP 800-97, p. 79",
+        "SP 800-97, p. 65"
+      ],
+      "retrieved": [
+        "SP 800-97 p.34 (score 0.56)",
+        "SP 800-97 p.65 (score 0.546)",
+        "SP 800-97 p.151 (score 0.539)",
+        "SP 800-97 p.79 (score 0.537)",
+        "SP 800-97 p.65 (score 0.534)"
+      ],
+      "timing": {
+        "retrieval_ms": 136,
+        "generation_ms": 10725,
+        "total_ms": 10862
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    }
+  ],
+  "vector-500-k3": [
+    {
+      "id": "Q01",
+      "type": "direct",
+      "question": "What does SUCI stand for and what problem does it solve?",
+      "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "SUCI stands for **Subscription Concealed Identifier**, a 5G feature [1].\n\nIt addresses the risk of a subscriber's permanent identifier, the SUPI, being exposed. The passage describes a scenario in which a device can be drawn to a malicious network and may send the SUPI in clear text [1]. Starting with 3GPP Release 15 in 2019, 5G standards support an optional feature that encrypts the SUPI with the home operator's public key to create the SUCI [1]. The SUCI is a ciphered version of the subscriber's identity that is always unique, so an attacker can't link it to the subscriber [1]. For this protection to work, SUCI must be configured with a non-null encryption cipher scheme [2].\n\nSUCI only protects subscriber information on 5G networks. It offers no protection when a device connects to earlier generations such as 4G LTE [2]. The passages show only the end of the attack description, so the full setup of the malicious-network scenario is not covered.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, p. 3",
+        "CSWP 36A, pp. 4-5"
+      ],
+      "retrieved": [
+        "CSWP 36A p.3 (score 0.514)",
+        "CSWP 36A p.4 (score 0.511)",
+        "CSWP 36A p.5 (score 0.497)"
+      ],
+      "timing": {
+        "retrieval_ms": 843,
+        "generation_ms": 9807,
+        "total_ms": 10651
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q02",
+      "type": "direct",
+      "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+      "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots.",
+      "status": "insufficient",
+      "auto_verdict": "incorrect",
+      "notes": "refused an answerable question",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The NSA passage warns that public Wi-Fi may not encrypt traffic even with a password, and that encrypted traffic can be decrypted by anyone who knows the pre-shared key [2], but none of the passages name a minimum encryption standard to look for before connecting",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.21 (score 0.641)",
+        "CSI U/OO/166417-21 p.2 (score 0.615)",
+        "SP 800-97 p.98 (score 0.605)"
+      ],
+      "timing": {
+        "retrieval_ms": 692,
+        "generation_ms": 7050,
+        "total_ms": 7742
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q03",
+      "type": "direct",
+      "question": "What is bluesnarfing?",
+      "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "Bluesnarfing is a Bluetooth-specific attack that lets an attacker gain access to a Bluetooth-enabled device by exploiting a firmware flaw in older devices dating from around 2003 [1]. The attack forces a connection to the device, which gives the attacker access to data stored on it, including the device's international mobile equipment identity (IMEI) [1].\n\nThe NSA lists bluesnarfing alongside bluejacking and bluebugging as Bluetooth compromise techniques that pose a threat in public settings, where they can be used to send, collect, or manipulate data and services on the device [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 51",
+        "CSI U/OO/166417-21, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.51 (score 0.524)",
+        "SP 800-121 Rev. 2 p.51 (score 0.491)",
+        "CSI U/OO/166417-21 p.3 (score 0.429)"
+      ],
+      "timing": {
+        "retrieval_ms": 815,
+        "generation_ms": 6279,
+        "total_ms": 7094
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q04",
+      "type": "direct",
+      "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+      "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "In the 5G hardware-enabled security white paper, the remote attestation service (RAS) is the central point that collects and aggregates trust measurements from all of the servers in the 5G environment [1]. Remote attestation is the method that lets 5G servers send their trust values to the RAS. Without it, the measurements could not be read from the servers [1]. Each 5G server sends its platform integrity measurements to the RAS, which then evaluates that server's trust status [2].\n\nThe paper also shows remote attestation presenting the trust status of all 5G servers in the NCCoE 5G Lab, and a single server's trust status when that server is selected [2]. Attestation failures call for forensic analysis [2]. Together, hardware roots of trust and remote attestation help mitigate specific threats to a 5G system's server infrastructure [3]. The paper points to an IETF remote attestation architecture for networked systems that applies in the 5G environment [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36B, p. 11",
+        "CSWP 36B, pp. 11-12",
+        "CSWP 36B, p. 2"
+      ],
+      "retrieved": [
+        "CSWP 36B p.11 (score 0.714)",
+        "CSWP 36B p.11 (score 0.664)",
+        "CSWP 36B p.2 (score 0.617)"
+      ],
+      "timing": {
+        "retrieval_ms": 832,
+        "generation_ms": 7804,
+        "total_ms": 8636
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q05",
+      "type": "direct",
+      "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+      "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "0/1 key facts; 2/2 citations from expected documents",
+      "answer": "Per the passages, when a handover occurs **new keys are generated**, which partly separates the new session from the previous one. However, **a new master session key (KASME) is not generated** [2]. With an X2 handover, fresh keying material can only be provided after the handover, for use in the *next* handover [2]. The target eNodeB is not meant to know the keys used in the original eNodeB session [1].\n\nThe passages do not name the specific key that protects the new session after handover, or explain how it is derived. They say only that \"new keys\" are generated and that KASME stays the same.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 27",
+        "SP 800-187, pp. 27-28"
+      ],
+      "retrieved": [
+        "SP 800-187 p.27 (score 0.642)",
+        "SP 800-187 p.27 (score 0.566)",
+        "SP 800-187 p.18 (score 0.561)"
+      ],
+      "timing": {
+        "retrieval_ms": 160,
+        "generation_ms": 6401,
+        "total_ms": 6561
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q06",
+      "type": "direct",
+      "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+      "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 3/3 citations from expected documents",
+      "answer": "In IEEE 802.11i, the 4-Way Handshake validates that both parties (the station and the access point) possess a pairwise master key (PMK), synchronizes the installation of temporal keys, and confirms the selection of cipher suites [2]. During the handshake, the station (STA) and access point (AP) exchange four frames and perform computations to generate and verify the data in those frames [1]. When the handshake completes successfully, the AP and STA have been mutually authenticated, and the IEEE 802.1X controlled ports are opened so data traffic can flow [1]. A new 4-Way Handshake, along with a new authentication exchange, is needed each time a device moves from one AP to another [3].\n\nNote that all three passages come from SP 800-97 (2007), which is marked as a withdrawn publication, so the guidance may be superseded.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 39",
+        "SP 800-97, p. 71",
+        "SP 800-97, p. 154"
+      ],
+      "retrieved": [
+        "SP 800-97 p.71 (score 0.63)",
+        "SP 800-97 p.39 (score 0.621)",
+        "SP 800-97 p.154 (score 0.603)"
+      ],
+      "timing": {
+        "retrieval_ms": 301,
+        "generation_ms": 6268,
+        "total_ms": 6569
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q07",
+      "type": "multi",
+      "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+      "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA).",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "0/2 key facts; 3/3 citations from expected documents; cites 1 of the 2 documents needed",
+      "answer": "**Attacks to know about:** Bluetooth devices face general wireless threats, including denial of service (DoS), eavesdropping, man-in-the-middle (MITM) attacks, message modification, and resource misappropriation. They also face Bluetooth-specific attacks that exploit known weaknesses in Bluetooth implementations and specifications [2]. DoS attacks can make a device's Bluetooth interface unusable and drain its battery [3]. Fuzzing attacks are also listed, but the passage cuts off before describing them [3]. There is a partial reference to eavesdropping on audio from a car's microphone, but its context is missing [3].\n\n**Protection:** The passages offer little guidance for individual devices in public places. They do say DoS attacks are not significant and can usually be avoided by moving out of range, because Bluetooth requires close proximity [3]. The other recommendations are for organizations. They should set and document security policies on using Bluetooth devices and on users' responsibilities, and they should provide awareness training [1]. The passages do not give specific steps for protecting your own devices in public, such as settings or pairing practices.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 6",
+        "SP 800-121 Rev. 2, p. 52",
+        "SP 800-121 Rev. 2, p. 53"
+      ],
+      "retrieved": [
+        "SP 800-121 Rev. 2 p.53 (score 0.73)",
+        "SP 800-121 Rev. 2 p.6 (score 0.721)",
+        "SP 800-121 Rev. 2 p.52 (score 0.711)"
+      ],
+      "timing": {
+        "retrieval_ms": 233,
+        "generation_ms": 7680,
+        "total_ms": 7913
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q08",
+      "type": "multi",
+      "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+      "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "5G standards protect subscriber confidentiality by using a temporary identity instead of the permanent identifier (SUPI) in the paging protocol [1]. They also explicitly define when that temporary identity must be reallocated (refreshed), so users are harder for an attacker to identify and locate [1][2]. The passages present both requirements as new in 5G, unlike previous generations of cellular systems [1][2]. Operators and organizations using 5G are encouraged to verify that paging works as the standards describe [1].\n\nThe passages do not cover the rest of the comparison. They refer to \"previous generations\" only in general terms and do not say how LTE handles paging or identity reallocation. One passage is titled after the Subscription Concealed Identifier (SUCI), but its text is only a reference list, so it does not explain how SUCI conceals the permanent identity [3].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36D, p. 2",
+        "CSWP 36C, p. 2",
+        "CSWP 36A, p. 10"
+      ],
+      "retrieved": [
+        "CSWP 36D p.2 (score 0.698)",
+        "CSWP 36C p.2 (score 0.652)",
+        "CSWP 36A p.10 (score 0.648)"
+      ],
+      "timing": {
+        "retrieval_ms": 149,
+        "generation_ms": 8285,
+        "total_ms": 8434
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q09",
+      "type": "multi",
+      "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+      "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D).",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 3/3 citations from expected documents",
+      "answer": "The passages name several 5G subscriber identifiers but explain their protection only in part. The **Subscription Concealed Identifier (SUCI)** protects subscriber identifiers [1]. 5G standards define SUCI protection as an optional capability for operators. Even so, it provides important security and privacy protections for subscriber identifiers [1]. A cited reference title names an attack technique, \"Intercept Unencrypted SUPI,\" which suggests the SUPI can be exposed when it is not concealed [2]. However, the passages do not define the SUPI or explain how SUCI conceals it.\n\nThe **5G-GUTI** is a temporary identity that the serving AMF assigns and maintains. That AMF may be in the home network or, when roaming, in a visited network [3]. The 5G-GUTI is made up of the home network identity (Mobile Country Code and Mobile Network Code), the AMF Identifier, and the **5G-Temporary Mobile Subscriber Identity (5G-TMSI)** [3]. The passages do not say how the 5G-GUTI or 5G-TMSI is protected from tracking, for example how or when they are reallocated. They also do not explain how SUCI concealment works technically.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSWP 36A, pp. 1-2",
+        "CSWP 36A, p. 10",
+        "CSWP 36C, p. 5"
+      ],
+      "retrieved": [
+        "CSWP 36A p.1 (score 0.729)",
+        "CSWP 36A p.10 (score 0.701)",
+        "CSWP 36C p.5 (score 0.692)"
+      ],
+      "timing": {
+        "retrieval_ms": 115,
+        "generation_ms": 11294,
+        "total_ms": 11409
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q10",
+      "type": "paraphrase",
+      "question": "Is it safe to pair my wireless headphones?",
+      "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "2/2 key facts; 2/3 citations from expected documents",
+      "answer": "The passages don't give a simple yes or no for wireless headphones, but they describe when Bluetooth pairing is risky and how to reduce that risk. Older pairing methods, namely PIN/Legacy Pairing (Bluetooth 2.0 and earlier) and low energy Legacy Pairing, are susceptible to eavesdropping attacks [2]. NIST recommends pairing as infrequently as possible, ideally in a secure area where attackers cannot realistically observe passkey entry or intercept the pairing messages [3]. For devices like headsets that cannot disable Bluetooth on their own, the whole device should be shut off when not in use [3].\n\nUsing headphones alongside another network, such as a phone or laptop also connected to a WLAN, means overall security depends on the security of all the networks involved [1]. The passages do not say whether any particular headphone model or Bluetooth version is safe, so whether your headphones are safe depends on which pairing method they use, and the documents provided don't cover that.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-121 Rev. 2, p. 52",
+        "SP 800-121 Rev. 2, p. 58",
+        "SP 800-153, p. 12"
+      ],
+      "retrieved": [
+        "SP 800-153 p.12 (score 0.464)",
+        "SP 800-121 Rev. 2 p.52 (score 0.44)",
+        "SP 800-121 Rev. 2 p.58 (score 0.434)"
+      ],
+      "timing": {
+        "retrieval_ms": 106,
+        "generation_ms": 7907,
+        "total_ms": 8013
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q11",
+      "type": "paraphrase",
+      "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+      "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'.",
+      "status": "answered",
+      "auto_verdict": "partial",
+      "notes": "2/3 key facts; 3/3 citations from expected documents",
+      "answer": "**Yes, to a degree, according to these documents.** The passages cover this for LTE (4G) and, more indirectly, for 5G.\n\n**LTE:** A rogue base station (a fake cell tower) set up to intercept traffic in an area, such as where you live, may let its operator work out whether a specific person is or is not living at a specific location [1]. This works because people usually keep their phones with them, so the phone reveals who owns it and where it is [1]. Some mobile apps can detect rogue base stations, though they often need specific chipsets found on older phone models [3]. One detection method checks the information in a tower's broadcast messages against known-good values [3].\n\n**5G:** A NIST paper on the Subscription Concealed Identifier (SUCI) describes a subscriber identifier being sent unprotected over the air from the phone to the cell tower [2]. Eavesdroppers could intercept it and use it to track the subscriber's location and link their movements over time [2]. That passage refers to eavesdroppers rather than fake towers specifically. The passages also do not explain how SUCI works or how well it protects 5G users.",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "SP 800-187, p. 33",
+        "SP 800-187, p. 40",
+        "CSWP 36A, p. 3"
+      ],
+      "retrieved": [
+        "SP 800-187 p.33 (score 0.597)",
+        "CSWP 36A p.3 (score 0.573)",
+        "SP 800-187 p.40 (score 0.519)"
+      ],
+      "timing": {
+        "retrieval_ms": 116,
+        "generation_ms": 9772,
+        "total_ms": 9888
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q12",
+      "type": "paraphrase",
+      "question": "Should I check my bank account on the free internet at a coffee shop?",
+      "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "3/3 key facts; 2/2 citations from expected documents",
+      "answer": "It's best not to. NSA guidance says to avoid accessing personal data such as bank accounts when using public Wi-Fi, and to avoid financial transactions in that setting [1]. Data sent over public Wi-Fi, especially open networks that don't require a password (like many free coffee shop networks), is vulnerable to theft or manipulation [3].\n\nIf you need to check your account while out, the guidance recommends using a corporate or personal Wi-Fi hotspot with strong authentication and encryption, which is more secure than public Wi-Fi [3]. Also avoid entering your most sensitive account passwords on public networks [1].",
+      "reason": null,
+      "warnings": [],
+      "citations": [
+        "CSI U/OO/166417-21, p. 5",
+        "CSI U/OO/166417-21, p. 2"
+      ],
+      "retrieved": [
+        "CSI U/OO/166417-21 p.5 (score 0.385)",
+        "CSI U/OO/166417-21 p.1 (score 0.347)",
+        "CSI U/OO/166417-21 p.2 (score 0.336)"
+      ],
+      "timing": {
+        "retrieval_ms": 109,
+        "generation_ms": 5700,
+        "total_ms": 5810
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "question": "What security improvements does WPA3 bring over WPA2?",
+      "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The retrieved passages describe only WEP, WPA and WPA2 (from the withdrawn 2007 SP 800-97) and contain no information about WPA3 or how it improves on WPA2",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.99 (score 0.673)",
+        "SP 800-97 p.102 (score 0.668)",
+        "SP 800-97 p.150 (score 0.636)"
+      ],
+      "timing": {
+        "retrieval_ms": 99,
+        "generation_ms": 4542,
+        "total_ms": 4641
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q14",
+      "type": "unanswerable",
+      "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+      "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps.",
+      "status": "insufficient",
+      "auto_verdict": "correct",
+      "notes": "safe response",
+      "answer": "I could not find enough information in the wireless security documents to answer this question. The collection covers NIST and NSA guidance on Wi-Fi, Bluetooth, LTE and 5G security. Try rephrasing the question, or consult the original publications.\n\nDetail: The passages contain no configuration steps for a Cisco Catalyst 9800 controller or for setting up a guest wireless network on any vendor's equipment",
+      "reason": "model found no answer in the passages",
+      "warnings": [],
+      "citations": [],
+      "retrieved": [
+        "SP 800-97 p.6 (score 0.478)",
+        "SP 800-97 p.106 (score 0.359)",
+        "SP 800-187 p.45 (score 0.358)"
+      ],
+      "timing": {
+        "retrieval_ms": 117,
+        "generation_ms": 7110,
+        "total_ms": 7227
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    },
+    {
+      "id": "Q15",
+      "type": "ambiguous",
+      "question": "How does authentication work?",
+      "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct.",
+      "status": "answered",
+      "auto_verdict": "correct",
+      "notes": "1/1 key facts; 3/3 citations from expected documents",
+      "answer": "Your question doesn't name a technology. The passages cover only IEEE 802.11i Wi-Fi networks, so this answer is limited to Wi-Fi; they say nothing about Bluetooth, LTE or 5G authentication. All passages come from SP 800-97, which is marked as a withdrawn publication, so check whether newer NIST guidance applies.\n\nIn an 802.11i Wi-Fi network, authentication involves three roles [1]:\n- **Supplicant**: the entity being authenticated, such as a station (STA) [1].\n- **Authenticator**: the entity that facilitates the authentication attempt, such as an access point (AP) [1].\n- **Authentication server (AS)**: the entity that provides the authentication service to the authenticator [1].\n\nThe actual method is provided through EAP, which supports authentication based on passwords, certificates, smart cards and tokens [3]. EAP methods can also combine techniques, such as a certificate followed by a password, or allow either a smart card or a token [3]. Some approaches pair TLS authentication with one or more additional EAP methods [2]. This flexibility lets EAP fit nearly any environment a WLAN might connect to [3]. The passages don't describe the step-by-step message exchange between the three roles or how keys are derived after authentication.",
+      "reason": null,
+      "warnings": [
+        "This answer cites a withdrawn publication (marked WITHDRAWN below). Its guidance may be outdated."
+      ],
+      "citations": [
+        "SP 800-97, p. 37",
+        "SP 800-97, p. 13",
+        "SP 800-97, p. 83"
+      ],
+      "retrieved": [
+        "SP 800-97 p.37 (score 0.629)",
+        "SP 800-97 p.83 (score 0.612)",
+        "SP 800-97 p.13 (score 0.605)"
+      ],
+      "timing": {
+        "retrieval_ms": 115,
+        "generation_ms": 8559,
+        "total_ms": 8674
+      },
+      "model": "claude-opus-5-5",
+      "backend": "claude-cli"
+    }
+  ]
+}

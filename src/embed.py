@@ -4,7 +4,8 @@ import time
 
 import chromadb
 
-from search import CHROMA_PATH, DB_PATH, EMBED_FN, collection_name
+from config import CHROMA_PATH, DB_PATH
+from search import EMBED_FN, collection_name
 
 BATCH = 128
 

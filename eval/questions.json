@@ -1,0 +1,79 @@
+[
+  {"id": "Q01", "type": "direct", "question": "What does SUCI stand for and what problem does it solve?",
+   "expected_docs": ["CSWP 36A"], "evidence": ["Subscription Concealed Identifier", "in the clear"],
+   "key_facts": [["Subscription Concealed Identifier"], ["SUPI"], ["in the clear", "eavesdrop", "intercept", "track", "encrypt", "conceal"]],
+   "expected_answer": "SUCI is the Subscription Concealed Identifier. It is the encrypted (concealed) form of the permanent subscriber identifier, the SUPI, so the SUPI is not sent in the clear over the air where eavesdroppers could intercept it and track the subscriber."},
+
+  {"id": "Q02", "type": "direct", "question": "What minimum Wi-Fi encryption does the NSA say a public network should have before I connect to it?",
+   "expected_docs": ["CSI U/OO/166417-21"], "evidence": ["WPA2"],
+   "key_facts": [["WPA2"]],
+   "expected_answer": "Only connect to networks with WPA2 encryption at a minimum, and do not connect to open Wi-Fi hotspots."},
+
+  {"id": "Q03", "type": "direct", "question": "What is bluesnarfing?",
+   "expected_docs": ["SP 800-121 Rev. 2", "CSI U/OO/166417-21"], "evidence": ["bluesnarfing"],
+   "key_facts": [["bluesnarfing"], ["access", "steal", "collect", "theft"], ["data", "information", "IMEI"]],
+   "expected_answer": "An attack that lets an attacker gain access to data on a Bluetooth-enabled device by exploiting a firmware flaw in older devices, exposing stored data and the device's IMEI."},
+
+  {"id": "Q04", "type": "direct", "question": "In the 5G hardware-enabled security white paper, what does the remote attestation service do?",
+   "expected_docs": ["CSWP 36B"], "evidence": ["attestation", "RAS"],
+   "key_facts": [["measurement"], ["trusted", "trust"], ["allowed", "list"]],
+   "expected_answer": "The remote attestation service (RAS) keeps up-to-date platform measurements and a list of allowed measurements, compares each 5G server's measurement with the list to decide whether the platform is trusted, and tells the orchestrator which servers can host 5G network functions."},
+
+  {"id": "Q05", "type": "direct", "question": "In LTE, which key protects the new session after a handover to another eNodeB?",
+   "expected_docs": ["SP 800-187"], "evidence": ["KeNB*", "handover"],
+   "key_facts": [["KeNB*"]],
+   "expected_answer": "KeNB*, derived from the KeNB together with other cryptographic parameters and the cell ID of the new eNodeB."},
+
+  {"id": "Q06", "type": "direct", "question": "What is the purpose of the 4-way handshake in IEEE 802.11i?",
+   "expected_docs": ["SP 800-97"], "evidence": ["4-way handshake"],
+   "key_facts": [["PTK", "pairwise", "temporal key", "keys"], ["PMK", "confirm", "possession", "authenticat"]],
+   "expected_answer": "It confirms that the station and the access point both hold the pairwise master key and derives and installs the temporal keys (PTK, and delivers the GTK) that protect data. The source, SP 800-97, is withdrawn, so the answer should carry a warning."},
+
+  {"id": "Q07", "type": "multi", "question": "Which Bluetooth attacks should I know about, and what should I do to protect my devices in public places?",
+   "expected_docs": ["SP 800-121 Rev. 2", "CSI U/OO/166417-21"], "min_docs": 2,
+   "evidence": ["bluesnarfing", "bluejacking", "bluebugging", "Bluetooth"],
+   "key_facts": [["bluesnarfing", "bluejacking", "bluebugging", "blueborne"], ["disable", "turn off", "not in use", "discoverable"]],
+   "expected_answer": "Attacks include bluejacking, bluesnarfing, bluebugging and BlueBorne (SP 800-121 Rev. 2 and the NSA sheet). In public: turn Bluetooth off when not in use, keep the device non-discoverable, and do not accept unexpected pairing requests (NSA)."},
+
+  {"id": "Q08", "type": "multi", "question": "How does 5G protect a subscriber's permanent identity compared with LTE?",
+   "expected_docs": ["CSWP 36A", "CSWP 36C", "CSWP 36D", "SP 800-187"], "min_docs": 2,
+   "evidence": ["SUCI", "SUPI", "IMSI"],
+   "key_facts": [["SUCI"], ["SUPI"], ["IMSI"]],
+   "expected_answer": "In LTE the permanent identity (IMSI) can be sent unencrypted, for example at first attach, which enables IMSI catching (SP 800-187). 5G can conceal the permanent identity (SUPI) as an encrypted SUCI (CSWP 36A) and uses temporary identities (5G-GUTI) that are reallocated (CSWP 36C). A complete answer needs both the LTE and the 5G documents."},
+
+  {"id": "Q09", "type": "multi", "question": "Which identifiers does a 5G network use for a subscriber, and how is each one protected from tracking?",
+   "expected_docs": ["CSWP 36A", "CSWP 36C", "CSWP 36D"], "min_docs": 2,
+   "evidence": ["SUPI", "SUCI", "5G-GUTI"],
+   "key_facts": [["SUPI"], ["SUCI"], ["GUTI"]],
+   "expected_answer": "The permanent SUPI is concealed as a SUCI when sent over the air (CSWP 36A); the temporary 5G-GUTI replaces it after registration and is reallocated frequently (CSWP 36C); paging uses the temporary identity, never the SUPI (CSWP 36D)."},
+
+  {"id": "Q10", "type": "paraphrase", "question": "Is it safe to pair my wireless headphones?",
+   "expected_docs": ["SP 800-121 Rev. 2", "CSI U/OO/166417-21"], "evidence": ["pair", "headset", "Bluetooth"],
+   "key_facts": [["Bluetooth"], ["pair"]],
+   "expected_answer": "Pairing is the vulnerable moment. Pair rarely, in a secure area away from eavesdroppers, use the strongest pairing mode the devices support, and turn Bluetooth (or the headset) off when not in use. The documents say 'Bluetooth headset', not 'wireless headphones'."},
+
+  {"id": "Q11", "type": "paraphrase", "question": "Can someone with a fake cell tower find out who I am and follow where my phone goes?",
+   "expected_docs": ["SP 800-187", "CSWP 36A", "CSWP 36C", "CSWP 36D"],
+   "evidence": ["rogue base station", "IMSI", "SUPI", "track"],
+   "key_facts": [["rogue base station", "IMSI catcher", "false base station", "fake base station"], ["IMSI", "SUPI"], ["track", "location"]],
+   "expected_answer": "Yes. A rogue base station (IMSI catcher) can make a phone reveal its permanent identity (IMSI in LTE, SUPI in 5G when concealment is off), which lets an attacker identify and track the subscriber. The documents say 'rogue base station', not 'fake cell tower'."},
+
+  {"id": "Q12", "type": "paraphrase", "question": "Should I check my bank account on the free internet at a coffee shop?",
+   "expected_docs": ["CSI U/OO/166417-21"], "evidence": ["public Wi-Fi", "bank", "hotspot"],
+   "key_facts": [["public Wi-Fi", "public WiFi", "public network"], ["bank", "financial", "sensitive", "personal data"], ["VPN", "avoid", "do not"]],
+   "expected_answer": "The NSA advises avoiding public Wi-Fi where possible; if it must be used, use a VPN and avoid accessing personal data such as bank accounts and financial transactions."},
+
+  {"id": "Q13", "type": "unanswerable", "question": "What security improvements does WPA3 bring over WPA2?",
+   "expected_docs": [], "evidence": [], "key_facts": [],
+   "expected_answer": "Safe response. WPA3 is not mentioned anywhere in the collection (the Wi-Fi documents date from 2007-2021 and stop at WPA2), so any description of WPA3 would come from the model's memory."},
+
+  {"id": "Q14", "type": "unanswerable", "question": "How do I configure a guest wireless network on a Cisco Catalyst 9800 controller?",
+   "expected_docs": [], "evidence": [], "key_facts": [],
+   "expected_answer": "Safe response. The collection contains vendor-neutral guidance only, with no product configuration steps."},
+
+  {"id": "Q15", "type": "ambiguous", "question": "How does authentication work?",
+   "expected_docs": ["SP 800-97", "SP 800-121 Rev. 2", "SP 800-187", "SP 800-153", "CSWP 36A", "CSWP 36C"],
+   "evidence": ["authenticat"],
+   "key_facts": [["Wi-Fi", "802.11", "WLAN", "Bluetooth", "LTE", "5G"]],
+   "expected_answer": "The question does not name a technology. A good answer says so and either asks which one is meant or describes authentication separately for each technology found in the passages (802.11i/EAP, Bluetooth pairing, LTE AKA). An answer covering one technology as if it were the only one is partially correct."}
+]
